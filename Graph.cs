@@ -157,38 +157,50 @@ namespace GraphManipulator
 
         public bool IsBipartiteGraph()
         {
-            //if (Vertices.Count == 1)
-            //    return false;
+            if (Vertices.Count == 0) 
+                return false;
 
-            //var tmpVertices = Vertices;
+            Dictionary<string, bool> visited = new Dictionary<string, bool>(); // Dicionário para armazenar se um vértice foi visitado e sua cor (true/false)
 
-            //tmpVertices[0].ColorMark = true;
+            foreach (var vertex in Vertices) // Inicializar todos os vértices como não visitados
+            {
+                visited[vertex.Name] = false;
+            }
 
-            //Queue<string> queue = new Queue<string>();
-            //queue.Enqueue(tmpVertices[0].Name);
+            Dictionary<string, bool> colors = new Dictionary<string, bool>(); // Dicionário para armazenar as cores dos vértices (true/false)
 
-            //while (queue.Count > 0)
-            //{
-            //    string currentVertex = queue.Dequeue();
+            foreach (var vertex in Vertices) // Percorrer todos os vértices
+            {
+                if (!visited[vertex.Name]) // Se o vértice ainda não foi visitado
+                {
+                    Queue<string> queue = new Queue<string>(); // Fila para realizar a travessia em largura (BFS)
+                    queue.Enqueue(vertex.Name); // Adicionar o vértice à fila
+                    colors[vertex.Name] = true; // Colorir o vértice com a cor verdadeira
 
-            //    foreach (var neighbor in AdjacencyList[currentVertex])
-            //    {
-            //        var neighborVertex = tmpVertices[GetVertexIndexInVertices(currentVertex)];
+                    while (queue.Count > 0) // Enquanto a fila não estiver vazia
+                    {
+                        string currentVertex = queue.Dequeue(); // Remover o vértice da frente da fila
 
-            //        if (neighborVertex.ColorMark == null)
-            //        {
-            //            neighborVertex.ColorMark = !tmpVertices[GetVertexIndexInVertices(currentVertex)].ColorMark;
-            //            queue.Enqueue(neighbor);
-            //        }
-            //        else if (neighborVertex.ColorMark == tmpVertices[GetVertexIndexInVertices(currentVertex)].ColorMark)
-            //        {
-            //            return false;
-            //        }
-            //    }
-            //}
+                        foreach (var neighbor in AdjacencyList[currentVertex]) // Para cada vizinho do vértice atual
+                        {
+                            if (!visited[neighbor]) // Se o vizinho não foi visitado
+                            {
+                                visited[neighbor] = true; // Marcar o vizinho como visitado
+                                colors[neighbor] = !colors[currentVertex]; // Atribuir ao vizinho a cor oposta ao do vértice atual
+                                queue.Enqueue(neighbor); // Adicionar o vizinho à fila
+                            }
+                            else if (colors[neighbor] == colors[currentVertex]) // Se o vizinho já foi visitado e tem a mesma cor do vértice atual
+                            {
+                                return false; // O grafo não é bipartido, pois existe uma aresta entre vértices com a mesma cor
+                            }
+                        }
+                    }
+                }
+            }
 
-            return true;
+            return true; // Se todas as arestas foram verificadas e nenhum conflito de cor foi encontrado, o grafo é bipartido
         }
+
 
         #endregion
 

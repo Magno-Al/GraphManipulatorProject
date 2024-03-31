@@ -170,7 +170,7 @@ A figura abaixo mostra a visualização do grafo através de uma matriz de adjacênc
   <img src="./imagens/ex06.png" alt="Grafo Direcionado">
 </p>
 
-#Conclusão
+# Conclusão
 <a name="#conclusao"></a>
 O trabalho foi desenvolvido com sucesso, atendendo aos requisitos propostos. O sistema é capaz de manipular grafos direcionados e não direcionados, além de realizar operações como adicionar e remover arestas, verificar a vizinhança de um vértice, o grau de um vértice e as propriedades de ser um grafo simples, regular, completo e bipartido. O sistema foi desenvolvido em C# e utiliza a interface gráfica do Windows Forms.
 
