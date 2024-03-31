@@ -1,153 +1,153 @@
 # Trabalho de Algoritmos em Grafos
 
-Trabalho desenvolvido para a disciplina de Algoritmos em Grafos, ministrada pelo professor Walison, no curso de Engenharia da Computação da Pontifícia Universidade Católica de Minas Gerais (PUC Minas).
+Trabalho desenvolvido para a disciplina de Algoritmos em Grafos, ministrada pelo professor Walison, no curso de Engenharia da ComputaÃ§Ã£o da PontifÃ­cia Universidade CatÃ³lica de Minas Gerais (PUC Minas).
 
 ## Alunos:
  - Alberto Magno
- - Bruno Guimarães Bitencourt
+ - Bruno GuimarÃ£es Bitencourt
  - Oscar Dias 
 
 
-### Índice
+### Ãndice
 
 1. [Objetivos](#objetivos)
-	1. [Descrição](#descricao)
-	1. [Pré-requisitos](#pre-requisitos)
-1. [Instalação e Execução](#instalacao-e-execucao)
-1. [Utilização Básica](#utilizacao-basica)
-1. [Implementação](#implementacao)
+	1. [DescriÃ§Ã£o](#descricao)
+	1. [PrÃ©-requisitos](#pre-requisitos)
+1. [InstalaÃ§Ã£o e ExecuÃ§Ã£o](#instalacao-e-execucao)
+1. [UtilizaÃ§Ã£o BÃ¡sica](#utilizacao-basica)
+1. [ImplementaÃ§Ã£o](#implementacao)
 	1. [Classe Vertex.cs](#classe-vertex)
 	1. [Classe Edge.cs](#classe-edge)
 	1. [Classe Graph.cs](#classe-graph) 
-1. [Exemplo de Utilização](#exemplo-de-utilizacao)
-	1. [Grafo Não Direcionado](#exemplo-grafo-direcionado) 
+1. [Exemplo de UtilizaÃ§Ã£o](#exemplo-de-utilizacao)
+	1. [Grafo NÃ£o Direcionado](#exemplo-grafo-direcionado) 
 	1. [Grafo Direcionado](#exemplo-grafo-direcionado)
-1. [Conclusão](#conclusao)
+1. [ConclusÃ£o](#conclusao)
 
 
 
 # Objetivos
 <a name="#objetivos"></a>
 
-## Descrição
+## DescriÃ§Ã£o
 <a name="#descricao"></a>
-O trabalho consiste na implementação de uma aplicação que realiza manipulações em grafos utilizando a linguagem C#.
+O trabalho consiste na implementaÃ§Ã£o de uma aplicaÃ§Ã£o que realiza manipulaÃ§Ãµes em grafos utilizando a linguagem C#.
 
-## Pré-requisitos
+## PrÃ©-requisitos
 <a name="#pre-requisitos"></a>
-- Representação do grafo utilizando matriz de adjacência.
-- Representação do grafo utilizando lista de adjacência.
-- Criação de um grafo com um número variável de vértices (o número de vértices deve ser inserido pelo usuário).
-- Possibilidade de definir se o grafo é direcionado ou não.
-- Implementação das operações de criação e remoção de arestas.
-- Identificação da vizinhança de um vértice (grafo não direcionado) ou sucessores e predecessores (grafo direcionado)
-- Identificação do grau de um vértice
-- Verificação das propriedades de ser um grafo simples, regular, completo e bipartido.
+- RepresentaÃ§Ã£o do grafo utilizando matriz de adjacÃªncia.
+- RepresentaÃ§Ã£o do grafo utilizando lista de adjacÃªncia.
+- CriaÃ§Ã£o de um grafo com um nÃºmero variÃ¡vel de vÃ©rtices (o nÃºmero de vÃ©rtices deve ser inserido pelo usuÃ¡rio).
+- Possibilidade de definir se o grafo Ã© direcionado ou nÃ£o.
+- ImplementaÃ§Ã£o das operaÃ§Ãµes de criaÃ§Ã£o e remoÃ§Ã£o de arestas.
+- IdentificaÃ§Ã£o da vizinhanÃ§a de um vÃ©rtice (grafo nÃ£o direcionado) ou sucessores e predecessores (grafo direcionado)
+- IdentificaÃ§Ã£o do grau de um vÃ©rtice
+- VerificaÃ§Ã£o das propriedades de ser um grafo simples, regular, completo e bipartido.
 
-# Instalação e Execução
+# InstalaÃ§Ã£o e ExecuÃ§Ã£o
 <a name="#instalacao-e-execucao"></a>
-Para executar o programa é necessário clonar o repositório através do comando:
+Para executar o programa Ã© necessÃ¡rio clonar o repositÃ³rio atravÃ©s do comando:
 ```bash
 git clone https://github.com/Magno-Al/GraphManipulatorProject.git
 ```
 
-Após clonar o repositório, abra a pasta `bin` do projeto conforme mostrado na figura abaixo:
+ApÃ³s clonar o repositÃ³rio, abra a pasta `bin` do projeto conforme mostrado na figura abaixo:
 
 <p align="center">
-  <img src="./imagens/passo1.png" alt="Diretórios após clonagem do repositório">
+  <img src="./imagens/passo1.png" alt="DiretÃ³rios apÃ³s clonagem do repositÃ³rio">
 </p>
 
-Em seguida, entre no diretório 'Release/net6.0-windows' e execute o arquivo 'GraphManipulator.exe' conforme mostrado abaixo:
+Em seguida, entre no diretÃ³rio 'Release/net6.0-windows' e execute o arquivo 'GraphManipulator.exe' conforme mostrado abaixo:
 
 <p align="center">
-  <img src="./imagens/passo2.png" alt="Execução do GraphManipulator">
+  <img src="./imagens/passo2.png" alt="ExecuÃ§Ã£o do GraphManipulator">
 </p>
 
-Dessa forma o programa será executado.
+Dessa forma o programa serÃ¡ executado.
  <p align="center">
-  <img src="./imagens/passo3.png" alt="Execução do GraphManipulator" width="80%">
+  <img src="./imagens/passo3.png" alt="ExecuÃ§Ã£o do GraphManipulator" width="80%">
 </p>
 
-# Utilização Básica
+# UtilizaÃ§Ã£o BÃ¡sica
 <a name="#utilizacao-basica"></a>
 
-O primeiro passo para utilização do sistema é selecionar a opção se deseja criar um grafo direcionado ou não (quadro em vermelho). E apartir disso clicar no botão "Start" (quadro em amarelo).
+O primeiro passo para utilizaÃ§Ã£o do sistema Ã© selecionar a opÃ§Ã£o se deseja criar um grafo direcionado ou nÃ£o (quadro em vermelho). E apartir disso clicar no botÃ£o "Start" (quadro em amarelo).
  <p align="center">
-  <img src="./imagens/util-01.png" alt="Execução do GraphManipulator" width="80%">
+  <img src="./imagens/util-01.png" alt="ExecuÃ§Ã£o do GraphManipulator" width="80%">
 </p>
 
-A partir disso, o sistema irá habilitar a opção de inserir o número de vértices, conforme mostrado abaixo:
+A partir disso, o sistema irÃ¡ habilitar a opÃ§Ã£o de inserir o nÃºmero de vÃ©rtices, conforme mostrado abaixo:
  <p align="center">
-  <img src="./imagens/util-02.png" alt="Execução do GraphManipulator" width="80%">
+  <img src="./imagens/util-02.png" alt="ExecuÃ§Ã£o do GraphManipulator" width="80%">
 </p>
 
-Após gerar o grafo, sistema habilitará as opções de Adicionar ou Remover Areastas, além de habilitar os combos na área de Gerenciar Arestas. Além disso, é possível a visualização do grafo clicando no botão **Lista de Adjacência** ou **Matriz de Adjacência**
+ApÃ³s gerar o grafo, sistema habilitarÃ¡ as opÃ§Ãµes de Adicionar ou Remover Areastas, alÃ©m de habilitar os combos na Ã¡rea de Gerenciar Arestas. AlÃ©m disso, Ã© possÃ­vel a visualizaÃ§Ã£o do grafo clicando no botÃ£o **Lista de AdjacÃªncia** ou **Matriz de AdjacÃªncia**
  <p align="center">
-  <img src="./imagens/util-03.png" alt="Execução do GraphManipulator" width="80%">
+  <img src="./imagens/util-03.png" alt="ExecuÃ§Ã£o do GraphManipulator" width="80%">
  </p>
 
-Na parte inferior da tela, é possível a partir de um seletor verifar as informações de grau do vértice e vizinhança do vértice. No caso de um grafo direcionado, os parâmetros grau do vértice de entrada, grau do vérice de saída, predecessores e sucessores irão aparecer. Além disso, informações se o grafo é simples, regular completo e bipartido.
+Na parte inferior da tela, Ã© possÃ­vel a partir de um seletor verifar as informaÃ§Ãµes de grau do vÃ©rtice e vizinhanÃ§a do vÃ©rtice. No caso de um grafo direcionado, os parÃ¢metros grau do vÃ©rtice de entrada, grau do vÃ©rice de saÃ­da, predecessores e sucessores irÃ£o aparecer. AlÃ©m disso, informaÃ§Ãµes se o grafo Ã© simples, regular completo e bipartido.
 <p align="center">
-  <img src="./imagens/util-04.png" alt="Execução do GraphManipulator" width="80%">
+  <img src="./imagens/util-04.png" alt="ExecuÃ§Ã£o do GraphManipulator" width="80%">
 </p>
 
-# Implementação
+# ImplementaÃ§Ã£o
 <a name="#implementacao"></a>
-A principal classe do projeto é a classe 'Graph.cs', que é responsável por manipular o grafo. Ela é baseada na implementação de outras duas classes: 'Vertex' e 'Edges'.
+A principal classe do projeto Ã© a classe 'Graph.cs', que Ã© responsÃ¡vel por manipular o grafo. Ela Ã© baseada na implementaÃ§Ã£o de outras duas classes: 'Vertex' e 'Edges'.
 
 ## Classe `Vertex`
 <a name="#classe-vertex"></a>
-A classe Vetex é responsável por representar um vértice do grafo. Ela possui os seguintes atributos:
+A classe Vetex Ã© responsÃ¡vel por representar um vÃ©rtice do grafo. Ela possui os seguintes atributos:
 ```csharp
 // Atributos da Classe Vertex
-public string Name { get; set; } // Nome do vértice
-public bool? ColorMark { get; set; } // Marcação de cor
+public string Name { get; set; } // Nome do vÃ©rtice
+public bool? ColorMark { get; set; } // MarcaÃ§Ã£o de cor
 ```
 
 
 ## Classe 'Edge'
 <a name="#classe-edge"></a>
-A classe Edge é responsável por representar uma aresta do grafo. Ela possui os seguintes atributos:
+A classe Edge Ã© responsÃ¡vel por representar uma aresta do grafo. Ela possui os seguintes atributos:
 ```csharp
 // Atributos da Classe Edge
 public string Name { get; set; } // Nome da aresta
-public Vertex Predecessor { get; set; } // Vértice de origem
-public Vertex Successor { get; set; } // Vértice de destino
+public Vertex Predecessor { get; set; } // VÃ©rtice de origem
+public Vertex Successor { get; set; } // VÃ©rtice de destino
 ```
 
 
 ### Classe `Graph`
 <a name="#classe-graph"></a>
-A classe Graph é responsável por manipular o grafo. Ela possui os seguintes atributos:
+A classe Graph Ã© responsÃ¡vel por manipular o grafo. Ela possui os seguintes atributos:
 ```csharp
-public bool IsDirectGraph { get; set; }// Indica se o grafo é direcionado ou não
-private List<Vertex> Vertices { get; set; }// Lista de vértices do grafo
+public bool IsDirectGraph { get; set; }// Indica se o grafo Ã© direcionado ou nÃ£o
+private List<Vertex> Vertices { get; set; }// Lista de vÃ©rtices do grafo
 private List<Edge> Edges { get; set; }// Lista de arestas do grafo
-public Dictionary<string, List<string>> AdjacencyList { get; private set; } // Lista de adjacência que mapeia cada vértice para seus vértices adjacentes
-public int[,] AdjacencyMatrix { get; private set; }// Matriz de adjacência que representa as conexões entre os vértices
+public Dictionary<string, List<string>> AdjacencyList { get; private set; } // Lista de adjacÃªncia que mapeia cada vÃ©rtice para seus vÃ©rtices adjacentes
+public int[,] AdjacencyMatrix { get; private set; }// Matriz de adjacÃªncia que representa as conexÃµes entre os vÃ©rtices
 ```
 
-# Exemplo de Utilização
+# Exemplo de UtilizaÃ§Ã£o
 <a name="#exemplo-de-utilizacao"></a>
-A seguir, serão apresentados exemplos de utilização do sistema considerando os casos de um grafo não direcionado e direcionado.
+A seguir, serÃ£o apresentados exemplos de utilizaÃ§Ã£o do sistema considerando os casos de um grafo nÃ£o direcionado e direcionado.
 
-## Grafo Não Direcionado
+## Grafo NÃ£o Direcionado
 <a name="#exemplo-grafo-nao-direcionado"></a>
-Para exemplificar o uso do sistema, será criado um grafo não direcionado mostrado na figura abaixo:
+Para exemplificar o uso do sistema, serÃ¡ criado um grafo nÃ£o direcionado mostrado na figura abaixo:
 <p align="center">
-  <img src="./imagens/ex01.png" alt="Grafo Não Direcionado">
+  <img src="./imagens/ex01.png" alt="Grafo NÃ£o Direcionado">
 </p>
 
-A figura abaixo mostra a visualização do grafo através de uma lista de adjacência.
+A figura abaixo mostra a visualizaÃ§Ã£o do grafo atravÃ©s de uma lista de adjacÃªncia.
 <p align="center">
-  <img src="./imagens/ex02.png" alt="Grafo Não Direcionado">
+  <img src="./imagens/ex02.png" alt="Grafo NÃ£o Direcionado">
 </p>
 
->[!IMPORTANTE]
+>[!IMPORTANT]
 >
-> Para visualização da lista de adjacência na tabela é preciso se orientar pelas colunas. No exemplo o vértice A tem uma lista de adjacência cujos elementos são B, D e E.
+> Para visualizaÃ§Ã£o da lista de adjacÃªncia na tabela Ã© preciso se orientar pelas colunas. No exemplo o vÃ©rtice A tem uma lista de adjacÃªncia cujos elementos sÃ£o B, D e E.
 
-A figura abaixo mostra a visualização do grafo através de uma matriz de adjacência.
+A figura abaixo mostra a visualizaÃ§Ã£o do grafo atravÃ©s de uma matriz de adjacÃªncia.
 <p align="center">
   <img src="./imagens/ex03.png" alt="Grafo Direcionado">
 </p>
@@ -155,24 +155,24 @@ A figura abaixo mostra a visualização do grafo através de uma matriz de adjacênc
 
 ## Grafo Direcionado
 <a name="#exemplo-grafo-direcionado"></a>
-Para exemplificar o uso do sistema, será criado um grafo direcionado mostrado na figura abaixo:
+Para exemplificar o uso do sistema, serÃ¡ criado um grafo direcionado mostrado na figura abaixo:
 <p align="center">
   <img src="./imagens/ex04.png" alt="Grafo Direcionado">
 </p>
 
-A figura abaixo mostra a visualização do grafo através de uma lista de adjacência.
+A figura abaixo mostra a visualizaÃ§Ã£o do grafo atravÃ©s de uma lista de adjacÃªncia.
 <p align="center">
   <img src="./imagens/ex05.png" alt="Grafo Direcionado">
 </p>
 
-A figura abaixo mostra a visualização do grafo através de uma matriz de adjacência.
+A figura abaixo mostra a visualizaÃ§Ã£o do grafo atravÃ©s de uma matriz de adjacÃªncia.
 <p align="center">
   <img src="./imagens/ex06.png" alt="Grafo Direcionado">
 </p>
 
-#Conclusão
+#ConclusÃ£o
 <a name="#conclusao"></a>
-O trabalho foi desenvolvido com sucesso, atendendo aos requisitos propostos. O sistema é capaz de manipular grafos direcionados e não direcionados, além de realizar operações como adicionar e remover arestas, verificar a vizinhança de um vértice, o grau de um vértice e as propriedades de ser um grafo simples, regular, completo e bipartido. O sistema foi desenvolvido em C# e utiliza a interface gráfica do Windows Forms.
+O trabalho foi desenvolvido com sucesso, atendendo aos requisitos propostos. O sistema Ã© capaz de manipular grafos direcionados e nÃ£o direcionados, alÃ©m de realizar operaÃ§Ãµes como adicionar e remover arestas, verificar a vizinhanÃ§a de um vÃ©rtice, o grau de um vÃ©rtice e as propriedades de ser um grafo simples, regular, completo e bipartido. O sistema foi desenvolvido em C# e utiliza a interface grÃ¡fica do Windows Forms.
 
 
 
