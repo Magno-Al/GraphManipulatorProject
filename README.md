@@ -79,15 +79,17 @@ O primeiro passo para utilização do sistema é selecionar a opção se deseja criar
 A partir disso, o sistema irá habilitar a opção de inserir o número de vértices, conforme mostrado abaixo:
  <p align="center">
   <img src="./imagens/util-02.png" alt="Execução do GraphManipulator" width="80%">
+</p>
 
 Após gerar o grafo, sistema habilitará as opções de Adicionar ou Remover Areastas, além de habilitar os combos na área de Gerenciar Arestas. Além disso, é possível a visualização do grafo clicando no botão **Lista de Adjacência** ou **Matriz de Adjacência**
  <p align="center">
   <img src="./imagens/util-03.png" alt="Execução do GraphManipulator" width="80%">
+ </p>
 
 Na parte inferior da tela, é possível a partir de um seletor verifar as informações de grau do vértice e vizinhança do vértice. No caso de um grafo direcionado, os parâmetros grau do vértice de entrada, grau do vérice de saída, predecessores e sucessores irão aparecer. Além disso, informações se o grafo é simples, regular completo e bipartido.
 <p align="center">
   <img src="./imagens/util-04.png" alt="Execução do GraphManipulator" width="80%">
-
+</p>
 
 # Implementação
 <a name="#implementacao"></a>
@@ -125,12 +127,51 @@ public Dictionary<string, List<string>> AdjacencyList { get; private set; } // L
 public int[,] AdjacencyMatrix { get; private set; }// Matriz de adjacência que representa as conexões entre os vértices
 ```
 
-## Subtítulo 1
+# Exemplo de Utilização
+<a name="#exemplo-de-utilizacao"></a>
+A seguir, serão apresentados exemplos de utilização do sistema considerando os casos de um grafo não direcionado e direcionado.
+
+## Grafo Não Direcionado
+<a name="#exemplo-grafo-nao-direcionado"></a>
+Para exemplificar o uso do sistema, será criado um grafo não direcionado mostrado na figura abaixo:
+<p align="center">
+  <img src="./imagens/ex01.png" alt="Grafo Não Direcionado">
+</p>
+
+A figura abaixo mostra a visualização do grafo através de uma lista de adjacência.
+<p align="center">
+  <img src="./imagens/ex02.png" alt="Grafo Não Direcionado">
+</p>
+
+>[!IMPORTANT]
+>
+> Para visualização da lista de adjacência na tabela é preciso se orientar pelas colunas. No exemplo o vértice A tem uma lista de adjacência cujos elementos são B, D e E.
+
+A figura abaixo mostra a visualização do grafo através de uma matriz de adjacência.
+<p align="center">
+  <img src="./imagens/ex03.png" alt="Grafo Direcionado">
+</p>
 
 
-## Subtítulo 2
+## Grafo Direcionado
+<a name="#exemplo-grafo-direcionado"></a>
+Para exemplificar o uso do sistema, será criado um grafo direcionado mostrado na figura abaixo:
+<p align="center">
+  <img src="./imagens/ex04.png" alt="Grafo Direcionado">
+</p>
 
-### Subsubtítulo
+A figura abaixo mostra a visualização do grafo através de uma lista de adjacência.
+<p align="center">
+  <img src="./imagens/ex05.png" alt="Grafo Direcionado">
+</p>
+
+A figura abaixo mostra a visualização do grafo através de uma matriz de adjacência.
+<p align="center">
+  <img src="./imagens/ex06.png" alt="Grafo Direcionado">
+</p>
+
+
+
 
 
 

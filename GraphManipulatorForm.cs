@@ -168,6 +168,11 @@ namespace GraphManipulator
                 nup_InitialVertexAmount.Enabled = true;
                 btn_GenerateGraph.Enabled = true;
 
+                lb_ResultSimpleGraph.Visible = true;
+                lb_ResultBipartiteGraph.Visible = true;
+                lb_ResultCompleteGraph.Visible = true;
+                lb_ResultRegularGraph.Visible = true;
+
                 if (chb_directedGraph.Checked)
                 {
                     lb_Predecessor.Visible = true;
