@@ -165,6 +165,9 @@ namespace GraphManipulator
                 btn_exhibitionModeList.Enabled = true;
                 btn_exhibitionModeMatrix.Enabled = true;
 
+                nup_InitialVertexAmount.Enabled = true;
+                btn_GenerateGraph.Enabled = true;
+
                 if (chb_directedGraph.Checked)
                 {
                     lb_Predecessor.Visible = true;
@@ -230,10 +233,11 @@ namespace GraphManipulator
                 lb_ResultSuccessorNeighborhood.Visible = false;
                 lb_Neighborhood.Visible = false;
 
-                //lb_ResultSimpleGraph.Enabled = false;
-                //lb_ResultBipartiteGraph.Enabled = false;
-                //lb_ResultCompleteGraph.Enabled = false;
-                //lb_ResultRegularGraph.Enabled = false;
+                lb_ResultSimpleGraph.Visible = false;
+                lb_ResultBipartiteGraph.Visible = false;
+                lb_ResultCompleteGraph.Visible = false;
+                lb_ResultRegularGraph.Visible = false;
+                
 
                 cb_VertexNeighborhood.Enabled = false;
                 cb_VertexNeighborhood.Items.Clear();
@@ -241,6 +245,13 @@ namespace GraphManipulator
                 cb_rv_selectVertex.Items.Clear();
                 cb_selectPredecessorEdge.Items.Clear();
                 cb_selectSucessorEdge.Items.Clear();
+
+                nup_InitialVertexAmount.Enabled = false;
+                btn_GenerateGraph.Enabled = false;
+
+                lb_vertexReturn.Text = "";
+                lb_edgeReturn.Text = "";
+
             }
 
         }
@@ -435,10 +446,13 @@ namespace GraphManipulator
             btn_GenerateGraph.Enabled = false;
             cb_VertexNeighborhood.Enabled = true;
 
-            //lb_ResultSimpleGraph.Enabled = true;
-            //lb_ResultBipartiteGraph.Enabled = true;
-            //lb_ResultCompleteGraph.Enabled = true;
-            //lb_ResultRegularGraph.Enabled = true;
+            dgv_adjacencyList.Visible = true;
+            dgv_adjacencyMatrix.Visible = false;
+
+            lb_ResultSimpleGraph.Enabled = true;
+            lb_ResultBipartiteGraph.Enabled = true;
+            lb_ResultCompleteGraph.Enabled = true;
+            lb_ResultRegularGraph.Enabled = true;
 
             ResetEdgesSelectionComboBox();
         }

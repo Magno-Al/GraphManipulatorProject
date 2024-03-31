@@ -342,9 +342,8 @@
             lb_edgeReturn.ForeColor = Color.Firebrick;
             lb_edgeReturn.Location = new Point(13, 227);
             lb_edgeReturn.Name = "lb_edgeReturn";
-            lb_edgeReturn.Size = new Size(49, 15);
+            lb_edgeReturn.Size = new Size(0, 15);
             lb_edgeReturn.TabIndex = 28;
-            lb_edgeReturn.Text = "Retorno";
             // 
             // lb_vertexReturn
             // 
@@ -352,9 +351,8 @@
             lb_vertexReturn.ForeColor = Color.Firebrick;
             lb_vertexReturn.Location = new Point(13, 237);
             lb_vertexReturn.Name = "lb_vertexReturn";
-            lb_vertexReturn.Size = new Size(49, 15);
+            lb_vertexReturn.Size = new Size(0, 15);
             lb_vertexReturn.TabIndex = 29;
-            lb_vertexReturn.Text = "Retorno";
             // 
             // chb_directedGraph
             // 
@@ -485,6 +483,7 @@
             btn_debug.TabIndex = 33;
             btn_debug.Text = "DEBUG";
             btn_debug.UseVisualStyleBackColor = true;
+            btn_debug.Visible = false;
             btn_debug.Click += btn_debug_Click;
             // 
             // cb_VertexNeighborhood
@@ -504,7 +503,7 @@
             // 
             label11.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label11.AutoSize = true;
-            label11.Location = new Point(782, 822);
+            label11.Location = new Point(782, 827);
             label11.Name = "label11";
             label11.Size = new Size(122, 15);
             label11.TabIndex = 34;
@@ -514,11 +513,10 @@
             // 
             lb_Neighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Neighborhood.AutoSize = true;
-            lb_Neighborhood.Location = new Point(910, 822);
+            lb_Neighborhood.Location = new Point(910, 827);
             lb_Neighborhood.Name = "lb_Neighborhood";
-            lb_Neighborhood.Size = new Size(14, 15);
+            lb_Neighborhood.Size = new Size(0, 15);
             lb_Neighborhood.TabIndex = 35;
-            lb_Neighborhood.Text = "R";
             lb_Neighborhood.Visible = false;
             // 
             // lb_ResultSimpleGraph
@@ -528,9 +526,8 @@
             lb_ResultSimpleGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lb_ResultSimpleGraph.Location = new Point(367, 881);
             lb_ResultSimpleGraph.Name = "lb_ResultSimpleGraph";
-            lb_ResultSimpleGraph.Size = new Size(20, 25);
+            lb_ResultSimpleGraph.Size = new Size(0, 25);
             lb_ResultSimpleGraph.TabIndex = 36;
-            lb_ResultSimpleGraph.Text = "r";
             // 
             // lb_ResultRegularGraph
             // 
@@ -539,9 +536,8 @@
             lb_ResultRegularGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lb_ResultRegularGraph.Location = new Point(563, 881);
             lb_ResultRegularGraph.Name = "lb_ResultRegularGraph";
-            lb_ResultRegularGraph.Size = new Size(20, 25);
+            lb_ResultRegularGraph.Size = new Size(0, 25);
             lb_ResultRegularGraph.TabIndex = 37;
-            lb_ResultRegularGraph.Text = "r";
             // 
             // lb_ResultCompleteGraph
             // 
@@ -550,9 +546,8 @@
             lb_ResultCompleteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lb_ResultCompleteGraph.Location = new Point(758, 881);
             lb_ResultCompleteGraph.Name = "lb_ResultCompleteGraph";
-            lb_ResultCompleteGraph.Size = new Size(20, 25);
+            lb_ResultCompleteGraph.Size = new Size(0, 25);
             lb_ResultCompleteGraph.TabIndex = 38;
-            lb_ResultCompleteGraph.Text = "r";
             // 
             // lb_ResultBipartiteGraph
             // 
@@ -561,9 +556,8 @@
             lb_ResultBipartiteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             lb_ResultBipartiteGraph.Location = new Point(964, 881);
             lb_ResultBipartiteGraph.Name = "lb_ResultBipartiteGraph";
-            lb_ResultBipartiteGraph.Size = new Size(20, 25);
+            lb_ResultBipartiteGraph.Size = new Size(0, 25);
             lb_ResultBipartiteGraph.TabIndex = 39;
-            lb_ResultBipartiteGraph.Text = "r";
             // 
             // label12
             // 
@@ -591,16 +585,15 @@
             lb_ResultVertexDegree.AutoSize = true;
             lb_ResultVertexDegree.Location = new Point(601, 827);
             lb_ResultVertexDegree.Name = "lb_ResultVertexDegree";
-            lb_ResultVertexDegree.Size = new Size(14, 15);
+            lb_ResultVertexDegree.Size = new Size(0, 15);
             lb_ResultVertexDegree.TabIndex = 42;
-            lb_ResultVertexDegree.Text = "R";
             lb_ResultVertexDegree.Visible = false;
             // 
             // lb_Predecessor
             // 
             lb_Predecessor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Predecessor.AutoSize = true;
-            lb_Predecessor.Location = new Point(930, 827);
+            lb_Predecessor.Location = new Point(910, 827);
             lb_Predecessor.Name = "lb_Predecessor";
             lb_Predecessor.Size = new Size(84, 15);
             lb_Predecessor.TabIndex = 43;
@@ -611,7 +604,7 @@
             // 
             lb_Successor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Successor.AutoSize = true;
-            lb_Successor.Location = new Point(930, 842);
+            lb_Successor.Location = new Point(927, 842);
             lb_Successor.Name = "lb_Successor";
             lb_Successor.Size = new Size(67, 15);
             lb_Successor.TabIndex = 44;
@@ -622,29 +615,27 @@
             // 
             lb_ResultPredecessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultPredecessorNeighborhood.AutoSize = true;
-            lb_ResultPredecessorNeighborhood.Location = new Point(1020, 827);
+            lb_ResultPredecessorNeighborhood.Location = new Point(1000, 827);
             lb_ResultPredecessorNeighborhood.Name = "lb_ResultPredecessorNeighborhood";
-            lb_ResultPredecessorNeighborhood.Size = new Size(14, 15);
+            lb_ResultPredecessorNeighborhood.Size = new Size(0, 15);
             lb_ResultPredecessorNeighborhood.TabIndex = 45;
-            lb_ResultPredecessorNeighborhood.Text = "R";
             lb_ResultPredecessorNeighborhood.Visible = false;
             // 
             // lb_ResultSuccessorNeighborhood
             // 
             lb_ResultSuccessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultSuccessorNeighborhood.AutoSize = true;
-            lb_ResultSuccessorNeighborhood.Location = new Point(1003, 842);
+            lb_ResultSuccessorNeighborhood.Location = new Point(1000, 842);
             lb_ResultSuccessorNeighborhood.Name = "lb_ResultSuccessorNeighborhood";
-            lb_ResultSuccessorNeighborhood.Size = new Size(14, 15);
+            lb_ResultSuccessorNeighborhood.Size = new Size(0, 15);
             lb_ResultSuccessorNeighborhood.TabIndex = 46;
-            lb_ResultSuccessorNeighborhood.Text = "R";
             lb_ResultSuccessorNeighborhood.Visible = false;
             // 
             // lb_Exit
             // 
             lb_Exit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Exit.AutoSize = true;
-            lb_Exit.Location = new Point(621, 847);
+            lb_Exit.Location = new Point(613, 842);
             lb_Exit.Name = "lb_Exit";
             lb_Exit.Size = new Size(38, 15);
             lb_Exit.TabIndex = 48;
@@ -655,7 +646,7 @@
             // 
             lb_Entrace.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Entrace.AutoSize = true;
-            lb_Entrace.Location = new Point(621, 832);
+            lb_Entrace.Location = new Point(601, 827);
             lb_Entrace.Name = "lb_Entrace";
             lb_Entrace.Size = new Size(50, 15);
             lb_Entrace.TabIndex = 47;
@@ -665,21 +656,19 @@
             // lb_ResultInVertexDegree
             // 
             lb_ResultInVertexDegree.AutoSize = true;
-            lb_ResultInVertexDegree.Location = new Point(677, 832);
+            lb_ResultInVertexDegree.Location = new Point(657, 827);
             lb_ResultInVertexDegree.Name = "lb_ResultInVertexDegree";
-            lb_ResultInVertexDegree.Size = new Size(14, 15);
+            lb_ResultInVertexDegree.Size = new Size(0, 15);
             lb_ResultInVertexDegree.TabIndex = 49;
-            lb_ResultInVertexDegree.Text = "R";
             lb_ResultInVertexDegree.Visible = false;
             // 
             // lb_ResultOutVertexDegree
             // 
             lb_ResultOutVertexDegree.AutoSize = true;
-            lb_ResultOutVertexDegree.Location = new Point(665, 847);
+            lb_ResultOutVertexDegree.Location = new Point(657, 842);
             lb_ResultOutVertexDegree.Name = "lb_ResultOutVertexDegree";
-            lb_ResultOutVertexDegree.Size = new Size(14, 15);
+            lb_ResultOutVertexDegree.Size = new Size(0, 15);
             lb_ResultOutVertexDegree.TabIndex = 50;
-            lb_ResultOutVertexDegree.Text = "R";
             lb_ResultOutVertexDegree.Visible = false;
             // 
             // GraphManipulatorForm
