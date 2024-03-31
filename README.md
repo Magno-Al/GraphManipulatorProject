@@ -1,4 +1,5 @@
 # Trabalho de Algoritmos em Grafos
+<<<<<<< HEAD
 
 Trabalho desenvolvido para a disciplina de Algoritmos em Grafos, ministrada pelo professor Walison, no curso de Engenharia da Computação da Pontifícia Universidade Católica de Minas Gerais (PUC Minas).
 
@@ -134,3 +135,5 @@ public int[,] AdjacencyMatrix { get; private set; }// Matriz de adjacência que r
 
 
 
+=======
+>>>>>>> 9f8b80108325a31725bfcb4fca027437271556de
