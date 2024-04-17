@@ -383,5 +383,51 @@ namespace GraphManipulator
             }
         }
         #endregion
+
+
+        // Deep Search with target retuning path
+        public List<string> DeepSearch(string startVertex, string targetVertex)
+        {
+            List<string> path = new List<string>();
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            DeepSearch(startVertex, targetVertex, visited, path);
+
+            return path;
+        }
+
+        private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path)
+        {
+            visited[currentVertex] = true;
+            path.Add(currentVertex);
+
+            if (currentVertex == targetVertex)
+            {
+                return true;
+            }
+
+            foreach (var neighbor in AdjacencyList[currentVertex])
+            {
+                if (!visited[neighbor])
+                {
+                    if (DeepSearch(neighbor, targetVertex, visited, path))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            path.Remove(currentVertex);
+            return false;
+        }
+        
+        
+
+        
     }
 }
