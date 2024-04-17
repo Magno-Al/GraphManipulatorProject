@@ -400,7 +400,7 @@ namespace GraphManipulator
 
             return path;
         }
-
+        // teste
         private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path)
         {
             visited[currentVertex] = true;

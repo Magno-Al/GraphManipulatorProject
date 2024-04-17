@@ -1,117 +1,33 @@
-# Compiled source #
-###################
-*.com
-*.class
+# Arquivos temporários gerados pelo Visual Studio
+vs\
+.vs
+vs/
+bin/
+obj/
+/bin//
+/obj/
+
+# Arquivos de compilação
 *.dll
+*.pdb
 *.exe
-*.o
-*.so
 
-# Packages #
-############
-# It's better to unpack these files and commit the raw source
-# git has its own built in compression methods
-*.7z
-*.dmg
-*.gz
-*.iso
-*.jar
-*.rar
-*.tar
-*.zip
+# Arquivos gerados pelo NuGet
+packages/
 
-# Logs and databases #
-######################
+# Arquivos de log e caches
 *.log
-*.sqlite
-*.sqlite3
-*.db
+*.cache
 
-# Visual Studio files #
-#######################
-# User-specific files
-*.rsuser
-*.suo
+# Arquivos de configuração do Visual Studio
 *.user
-*.userosscache
+*.suo
 *.sln.docstates
 
-# Build results
-[Dd]ebug/
-[Dd]ebugPublic/
-[Rr]elease/
-[Rr]eleases/
-x64/
-x86/
-[Aa][Rr][Mm]/
-[Aa][Rr][Mm]64/
-bld/
-[Bb]in/
-[Oo]bj/
-[Ll]og/
-[Ll]ogs/
+# Arquivos de configuração específicos do projeto
+*.csproj.user
+*.config.user
 
-# Visual Studio 2019
-.vs/
-*.vscode/
-
-# Rider
-.idea/
-*.sln.iml
-
-# Resharper
-_ReSharper*/
-*.[Rr]e[Ss]harper
-
-# NuGet Packages
-*.nuget.props
-*.nuget.targets
-
-# MSTest test Results
-[Tt]est[Rr]esult*/
-[Bb]uild[Ll]og.*
-
-# NUNIT
-*.VisualState.xml
-TestResult.xml
-
-# Build Results of an ATL Project
-[Dd]ebugPS/
-[Rr]eleasePS/
-dlldata.c
-
-# Roslyn cache directories
-*.ide/
+# Arquivos de análise de código
 *.sln.ide
-
-# Tools
-_ReSharper*/
-_Tools/
-
-# Power Mode II
-*.energy
-
-# Fody
-FodyWeavers.xml
-
-# Unwanted file types
-*.bat
-*.cmd
-*.cur
-*.dll
-*.dll.config
-*.ini
-*.md
-*.png
-*.pdb
-*.resources
-*.resx
-*.sln
-*.tmp
-*.userprefs
-*.vsconfig
-*.vssscc
-*.vsix
-*.vstemplate
-*.xcuserdata
-*.xcworkspace
+*.csproj.ide
