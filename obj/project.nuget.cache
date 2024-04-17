@@ -1,8 +1,14 @@
 {
   "version": 2,
+<<<<<<< HEAD
   "dgSpecHash": "VzR1iDmFxJcYA+zdxqNMh6pGfqU/Le+Cq8RK8hb3aRXJXibWgdFhcB+Ek/bNaqkYCmH6OMtOb9GAzdr7vy2Xlg==",
   "success": true,
   "projectFilePath": "C:\\Users\\bruno\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+=======
+  "dgSpecHash": "Dat07JTrEIeHBLIEGf8eeko7QiBmS2gfTvB2D65azXOs9ujMkxaPyR05TcaFO5uvUFVlCos4l4jWBpowf4goaQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj",
+>>>>>>> a996dba34604ff5727bc9d23f0e70ba4e89b9a1f
   "expectedPackageFiles": [],
   "logs": []
 }
