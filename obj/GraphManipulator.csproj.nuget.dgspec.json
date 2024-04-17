@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bruno\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj": {}
+    "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bruno\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj": {
+    "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bruno\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+        "projectUniqueName": "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj",
         "projectName": "GraphManipulator",
-        "projectPath": "C:\\Users\\bruno\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
-        "packagesPath": "C:\\Users\\bruno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bruno\\Source\\Repos\\GraphManipulatorProject\\obj\\",
+        "projectPath": "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj",
+        "packagesPath": "C:\\Users\\oscar\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\bruno\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\oscar\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,8 +26,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://pkgs.dev.azure.com/meep-app/735a1e53-3aa4-46a0-a8b4-a9c46bfb2625/_packaging/Meep-Feed/nuget/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
@@ -63,7 +63,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
