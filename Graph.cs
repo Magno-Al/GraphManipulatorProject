@@ -425,9 +425,183 @@ namespace GraphManipulator
             path.Remove(currentVertex);
             return false;
         }
-        
-        
 
-        
+
+
+        // Função recursiva para busca em profundidade
+        private void DepthSearchUtil(string vertex, Dictionary<string, bool> visited, List<string> visitedVertices)
+        {
+            // Marca o vértice atual como visitado e o imprime
+            visited[vertex] = true;
+            visitedVertices.Add(vertex);
+
+            // Percorre todos os vértices adjacentes ao vértice atual
+            foreach (var adjacentVertex in AdjacencyList[vertex])
+            {
+                if (!visited[adjacentVertex])
+                {
+                    DepthSearchUtil(adjacentVertex, visited, visitedVertices);
+                }
+            }
+        }
+
+        // Função para realizar busca em profundidade
+        public List<string> DepthSearch()
+        {
+            List<string> visitedVertices = new List<string>();
+
+            // Inicializa todos os vértices como não visitados
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            // Executa a DFS a partir de todos os vértices não visitados
+            foreach (var vertex in Vertices)
+            {
+                if (!visited[vertex.Name])
+                {
+                    DepthSearchUtil(vertex.Name, visited, visitedVertices);
+                }
+            }
+
+            return visitedVertices;
+        }
+
+
+        //Função para realizar busca em largura partindo de um vertice especifico
+        public List<string> BreadthSearch(string startVertex)
+        {
+            List<string> visitedVertices = new List<string>();
+            Queue<string> queue = new Queue<string>();
+
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            queue.Enqueue(startVertex);
+            visited[startVertex] = true;
+
+            while (queue.Count != 0)
+            {
+                string currentVertex = queue.Dequeue();
+                visitedVertices.Add(currentVertex);
+
+                foreach (var adjacentVertex in AdjacencyList[currentVertex])
+                {
+                    if (!visited[adjacentVertex])
+                    {
+                        visited[adjacentVertex] = true;
+                        queue.Enqueue(adjacentVertex);
+                    }
+                }
+            }
+
+            return visitedVertices;
+        }
+
+        //Função para realizar busca em largura partindo de um vertice aleatorio
+        public List<string> BreadthSearch()
+        {
+            List<string> visitedVertices = new List<string>();
+            Queue<string> queue = new Queue<string>();
+
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            // Escolhe um vértice aleatório para começar a BFS
+            Random rand = new Random();
+            int randomIndex = rand.Next(0, Vertices.Count);
+            string startVertex = Vertices[randomIndex].Name;
+
+            queue.Enqueue(startVertex);
+            visited[startVertex] = true;
+
+            while (queue.Count != 0)
+            {
+                string currentVertex = queue.Dequeue();
+                visitedVertices.Add(currentVertex);
+
+                foreach (var adjacentVertex in AdjacencyList[currentVertex])
+                {
+                    if (!visited[adjacentVertex])
+                    {
+                        visited[adjacentVertex] = true;
+                        queue.Enqueue(adjacentVertex);
+                    }
+                }
+            }
+
+            return visitedVertices;
+        }
+
+        //Funçao para realizar ordenação topologica
+        public List<string> TopologicalSort()
+        {
+            Stack<string> stack = new Stack<string>();
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            foreach (var vertex in Vertices)
+            {
+                if (!visited[vertex.Name])
+                {
+                    TopologicalSortUtil(vertex.Name, visited, stack);
+                }
+            }
+
+            List<string> result = new List<string>();
+            while (stack.Count != 0)
+            {
+                result.Add(stack.Pop());
+            }
+
+            return result;
+        }
+
+        //Função recursiva para realizar a ordenação topologica
+        private void TopologicalSortUtil(string vertex, Dictionary<string, bool> visited, Stack<string> stack)
+        {
+            visited[vertex] = true;
+
+            foreach (var adjacentVertex in AdjacencyList[vertex])
+            {
+                if (!visited[adjacentVertex])
+                {
+                    TopologicalSortUtil(adjacentVertex, visited, stack);
+                }
+            }
+
+            stack.Push(vertex);
+        }
+
+        // Verifica se o grafo é conexo utilizando busca em largura ou busca em profundidade
+        public bool IsConnectedGraph()
+        {
+            
+            // Realiza a busca em largura (BFS) ou busca em profundidade (DFS)
+            List<string> visitedVertices;
+            if (!IsDirectGraph)
+            {
+                visitedVertices = BreadthSearch();
+            }
+            else
+            {
+                visitedVertices = DepthSearch();
+            }
+
+            // Verifica se todos os vértices foram visitados
+            return visitedVertices.Count == Vertices.Count;
+        }
     }
 }

@@ -1,14 +1,15 @@
 {
   "version": 2,
-<<<<<<< HEAD
-  "dgSpecHash": "VzR1iDmFxJcYA+zdxqNMh6pGfqU/Le+Cq8RK8hb3aRXJXibWgdFhcB+Ek/bNaqkYCmH6OMtOb9GAzdr7vy2Xlg==",
+  "dgSpecHash": "PBapIPcsRF54XrIwg5gxrJ00TlZEw+glIh6hxcoBFPTs3w7NQtO3RmKym8q4P2jWkO2GZed80DH7n9X0o5BE1A==",
   "success": true,
-  "projectFilePath": "C:\\Users\\bruno\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
-=======
-  "dgSpecHash": "Dat07JTrEIeHBLIEGf8eeko7QiBmS2gfTvB2D65azXOs9ujMkxaPyR05TcaFO5uvUFVlCos4l4jWBpowf4goaQ==",
-  "success": true,
-  "projectFilePath": "C:\\Users\\oscar\\OneDrive\\Documentos\\Oscar\\Grafos\\GraphManipulatorProject\\GraphManipulator.csproj",
->>>>>>> a996dba34604ff5727bc9d23f0e70ba4e89b9a1f
+  "projectFilePath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
   "expectedPackageFiles": [],
-  "logs": []
+  "logs": [
+    {
+      "code": "Undefined",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Problem reading the cache file C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
+    }
+  ]
 }

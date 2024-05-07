@@ -31,3 +31,13 @@ C:\Users\bruno\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\r
 C:\Users\bruno\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.pdb
 C:\Users\bruno\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.genruntimeconfig.cache
 C:\Users\bruno\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\ref\GraphManipulator.dll
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.GraphManipulatorForm.resources
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.csproj.GenerateResource.cache
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.AssemblyInfoInputs.cache
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.AssemblyInfo.cs
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.csproj.CoreCompileInputs.cache
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.sourcelink.json
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.dll
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\refint\GraphManipulator.dll
+C:\Users\dias_\Source\Repos\GraphManipulatorProject\obj\Release\net6.0-windows\GraphManipulator.pdb

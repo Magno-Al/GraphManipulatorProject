@@ -242,7 +242,7 @@ namespace GraphManipulator
                 lb_ResultBipartiteGraph.Visible = false;
                 lb_ResultCompleteGraph.Visible = false;
                 lb_ResultRegularGraph.Visible = false;
-                
+
 
                 cb_VertexNeighborhood.Enabled = false;
                 cb_VertexNeighborhood.Items.Clear();
@@ -302,7 +302,7 @@ namespace GraphManipulator
 
         private void btn_rv_removeVertex_Click(object sender, EventArgs e)
         {
-            if(Graph.GetAllVerticesNames().Count == 1)
+            if (Graph.GetAllVerticesNames().Count == 1)
             {
                 lb_vertexReturn.Text = $"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois é o unico vertice do grafo";
                 MessageBox.Show($"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois é o unico vertice do grafo");
@@ -518,5 +518,15 @@ namespace GraphManipulator
             }
         }
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Graph.DepthSearch();
+            Graph.DeepSearch("A", "F");
+            Graph.BreadthSearch("A");
+            Graph.BreadthSearch();
+            Graph.TopologicalSort();
+            Graph.IsConnectedGraph();
+        }
     }
 }

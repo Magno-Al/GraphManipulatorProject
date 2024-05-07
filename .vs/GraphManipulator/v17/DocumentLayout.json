@@ -1,17 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\",
+  "WorkspaceRootPath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|c:\\users\\ammag\\\u00E1rea de trabalho\\grafos\\tp1\\graphmanipulator\\graphmanipulator\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|solutionrelative:graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|solutionrelative:graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|c:\\users\\dias_\\source\\repos\\graphmanipulatorproject\\graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|solutionrelative:graph.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|c:\\users\\dias_\\source\\repos\\graphmanipulatorproject\\graphmanipulatorform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|solutionrelative:graphmanipulatorform.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{F71B7588-5B2A-473C-B332-AF0F7AEA8D6B}|GraphManipulator.csproj|solutionrelative:graphmanipulatorform.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -22,43 +26,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{13b12e3e-c1b4-4539-9371-4fe9a0d523fc}"
+            },
+            {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
+              "Title": "GraphManipulatorForm.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulatorForm.Designer.cs",
+              "RelativeDocumentMoniker": "GraphManipulatorForm.Designer.cs",
+              "ToolTip": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulatorForm.Designer.cs",
+              "RelativeToolTip": "GraphManipulatorForm.Designer.cs",
+              "ViewState": "AQIAABIDAAAAAAAAAAAuwKsCAAAzAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-07T22:18:41.436Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "Graph.cs",
-              "DocumentMoniker": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\Graph.cs",
+              "DocumentMoniker": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\Graph.cs",
               "RelativeDocumentMoniker": "Graph.cs",
-              "ToolTip": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\Graph.cs",
+              "ToolTip": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\Graph.cs",
               "RelativeToolTip": "Graph.cs",
-              "ViewState": "AQIAAB0AAAAAAAAAAAAswCoAAAAcAAAA",
+              "ViewState": "AQIAAO8BAAAAAAAAAAAqwPoBAAAjAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-03-20T22:25:55.416Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "GraphManipulatorForm.cs",
-              "DocumentMoniker": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\GraphManipulatorForm.cs",
+              "DocumentMoniker": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulatorForm.cs",
               "RelativeDocumentMoniker": "GraphManipulatorForm.cs",
-              "ToolTip": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\GraphManipulatorForm.cs",
+              "ToolTip": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulatorForm.cs",
               "RelativeToolTip": "GraphManipulatorForm.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAlAAAA",
+              "ViewState": "AQIAAPkBAAAAAAAAAAAmwBACAAAFAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T22:24:15.937Z"
+              "WhenOpened": "2024-03-20T22:24:15.937Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "GraphManipulatorForm.cs [Projeto]",
-              "DocumentMoniker": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\GraphManipulatorForm.cs",
+              "DocumentIndex": 3,
+              "Title": "GraphManipulatorForm.cs [Design]",
+              "DocumentMoniker": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulatorForm.cs",
               "RelativeDocumentMoniker": "GraphManipulatorForm.cs",
-              "ToolTip": "C:\\Users\\ammag\\\u00C1rea de Trabalho\\Grafos\\Tp1\\GraphManipulator\\GraphManipulator\\GraphManipulatorForm.cs [Projeto]",
-              "RelativeToolTip": "GraphManipulatorForm.cs [Projeto]",
+              "ToolTip": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulatorForm.cs [Design]",
+              "RelativeToolTip": "GraphManipulatorForm.cs [Design]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-20T22:24:18.027Z"
+              "WhenOpened": "2024-03-20T22:24:18.027Z",
+              "EditorCaption": " [Design]"
             }
           ]
         }
