@@ -538,7 +538,13 @@ namespace GraphManipulator
             Graph.BreadthSearch("A");
             Graph.BreadthSearch();
             Graph.TopologicalSort();
-            Graph.IsConnectedGraph();
+            bool isConnected = Graph.IsConnectedGraph();
+            if (isConnected)
+            {
+                Graph.KruskalMST();
+                Graph.PrimMST();
+                Graph.DijkstraShortestPath("A", "E");
+            }
         }
 
         private void cb_inputSucessorEdge_TextChanged(object sender, KeyPressEventArgs e)
