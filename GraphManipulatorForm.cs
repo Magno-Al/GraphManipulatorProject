@@ -366,7 +366,19 @@ namespace GraphManipulator
             }
             else
             {
-                if (Graph.AddEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text))
+                int? weight = null; // Inicialize o peso como null
+                if (!string.IsNullOrEmpty(cb_inputSucessorEdge.Text))
+                {
+                    // Tente converter o valor do campo de entrada de texto em um número inteiro
+                    if (!int.TryParse(cb_inputSucessorEdge.Text, out int tempWeight))
+                    {
+                        // Se a conversão falhar, exiba uma mensagem de erro
+                        MessageBox.Show("Por favor, insira um valor válido para o peso.");
+                        return;
+                    }
+                    weight = tempWeight; // Atribua o valor convertido à variável de peso
+                }
+                if (Graph.AddEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text, weight))
                 {
                     lb_edgeReturn.Text = $"Aresta {{{cb_selectPredecessorEdge.Text}, {cb_selectSucessorEdge.Text}}} adicionada";
 
@@ -527,6 +539,16 @@ namespace GraphManipulator
             Graph.BreadthSearch();
             Graph.TopologicalSort();
             Graph.IsConnectedGraph();
+        }
+
+        private void cb_inputSucessorEdge_TextChanged(object sender, KeyPressEventArgs e)
+        {
+            // Verificar se a tecla pressionada não é um número ou uma tecla de controle
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                // Se não for um número, cancelar a entrada de teclado
+                e.Handled = true;
+            }
         }
     }
 }

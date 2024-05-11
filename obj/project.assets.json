@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+      "projectUniqueName": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
       "projectName": "GraphManipulator",
-      "projectPath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+      "projectPath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
       "packagesPath": "C:\\Users\\dias_\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\obj\\",
+      "outputPath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "d:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -78,13 +78,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.202\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  }
 }

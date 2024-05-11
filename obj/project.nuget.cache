@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "PBapIPcsRF54XrIwg5gxrJ00TlZEw+glIh6hxcoBFPTs3w7NQtO3RmKym8q4P2jWkO2GZed80DH7n9X0o5BE1A==",
+  "dgSpecHash": "yERxnSbPWs4yfijRQTKEKhebmZL01P6g8NqwaQnotKzr1l1WLvzetam7vOvgCd3WAhwRvrQEIv6TqiqtaTe2wg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+  "projectFilePath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
   "expectedPackageFiles": [],
-  "logs": [
-    {
-      "code": "Undefined",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "Problem reading the cache file C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\obj\\project.nuget.cache : Invalid property identifier character: <. Path 'version', line 3, position 0."
-    }
-  ]
+  "logs": []
 }

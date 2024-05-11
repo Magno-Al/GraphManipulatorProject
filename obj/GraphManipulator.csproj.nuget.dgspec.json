@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj": {}
+    "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj": {
+    "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+        "projectUniqueName": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
         "projectName": "GraphManipulator",
-        "projectPath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\GraphManipulator.csproj",
+        "projectPath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\GraphManipulator.csproj",
         "packagesPath": "C:\\Users\\dias_\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dias_\\Source\\Repos\\GraphManipulatorProject\\obj\\",
+        "outputPath": "C:\\Users\\dias_\\source\\repos\\GraphManipulatorProject\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "d:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

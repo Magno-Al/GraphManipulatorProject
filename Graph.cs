@@ -14,7 +14,7 @@ namespace GraphManipulator
         public bool IsDirectGraph { get; set; }
         private List<Vertex> Vertices { get; set; }
         private List<Edge> Edges { get; set; }
-        public Dictionary<string, List<string>> AdjacencyList { get; private set; }
+        public Dictionary<string, List<(string, int)>> AdjacencyList { get; private set; }
         public int[,] AdjacencyMatrix { get; private set; }
 
         public int GraphDegree
@@ -33,7 +33,7 @@ namespace GraphManipulator
             Edges = new List<Edge>();
 
             AdjacencyMatrix = new int[0, 0];
-            AdjacencyList = new Dictionary<string, List<string>>();
+            AdjacencyList = new Dictionary<string, List<(string, int)>>();
         }
 
         #region GraphPrivateMethods
@@ -68,10 +68,16 @@ namespace GraphManipulator
                 int row = Vertices.IndexOf(edge.Predecessor);
                 int col = Vertices.IndexOf(edge.Successor);
 
-                AdjacencyMatrix[row, col] += 1;
+                //AdjacencyMatrix[row, col] += 1;
+
+                // if (!IsDirectGraph)
+                // AdjacencyMatrix[col, row] += 1;
+
+                // Aqui, você pode definir o peso na matriz de adjacência
+                AdjacencyMatrix[row, col] = edge.Weight ?? 1; // Defina o peso como 1 se for nulo
 
                 if (!IsDirectGraph)
-                    AdjacencyMatrix[col, row] += 1;
+                    AdjacencyMatrix[col, row] = edge.Weight ?? 1; // Defina o peso como 1 se for nulo
             }
         }
 
@@ -161,14 +167,15 @@ namespace GraphManipulator
                 return false;
 
             Dictionary<string, bool> visited = new Dictionary<string, bool>(); // Dicionário para armazenar se um vértice foi visitado e sua cor (true/false)
+            Dictionary<string, bool> colors = new Dictionary<string, bool>(); // Dicionário para armazenar as cores dos vértices (true/false)
 
             foreach (var vertex in Vertices) // Inicializar todos os vértices como não visitados
             {
                 visited[vertex.Name] = false;
+                colors[vertex.Name] = false;
             }
 
-            Dictionary<string, bool> colors = new Dictionary<string, bool>(); // Dicionário para armazenar as cores dos vértices (true/false)
-
+            
             foreach (var vertex in Vertices) // Percorrer todos os vértices
             {
                 if (!visited[vertex.Name]) // Se o vértice ainda não foi visitado
@@ -181,7 +188,7 @@ namespace GraphManipulator
                     {
                         string currentVertex = queue.Dequeue(); // Remover o vértice da frente da fila
 
-                        foreach (var neighbor in AdjacencyList[currentVertex]) // Para cada vizinho do vértice atual
+                        foreach (var (neighbor, weight) in AdjacencyList[currentVertex]) // Para cada vizinho do vértice atual
                         {
                             if (!visited[neighbor]) // Se o vizinho não foi visitado
                             {
@@ -218,7 +225,7 @@ namespace GraphManipulator
             Vertex newVertex = new Vertex(name);
             Vertices.Add(newVertex);
 
-            AdjacencyList.Add(newVertex.Name, new List<string>());
+            AdjacencyList.Add(newVertex.Name, new List<(string, int)>());
             UpdateAdjacencyMatrix();
 
             return true;
@@ -290,15 +297,16 @@ namespace GraphManipulator
         #endregion
 
         #region EdgeMethods
-        private bool AddEdge(Vertex predecessorVertex, Vertex successorVertex)
+        private bool AddEdge(Vertex predecessorVertex, Vertex successorVertex, int? weight)
         {
             if (predecessorVertex != null && successorVertex != null)
             {
                 string edgeName = "e" + Edges.Count;
-                Edges.Add(new Edge(edgeName, predecessorVertex, successorVertex));
+                Edges.Add(new Edge(edgeName, predecessorVertex, successorVertex, weight));
 
-                AdjacencyList[predecessorVertex.Name].Add(successorVertex.Name);
-                if (!IsDirectGraph && predecessorVertex.Name != successorVertex.Name) AdjacencyList[successorVertex.Name].Add(predecessorVertex.Name);
+                AdjacencyList[predecessorVertex.Name].Add((successorVertex.Name, weight ?? 1));
+                if (!IsDirectGraph && predecessorVertex.Name != successorVertex.Name) 
+                    AdjacencyList[successorVertex.Name].Add((predecessorVertex.Name, weight ?? 1));
 
                 UpdateAdjacencyMatrix();
 
@@ -308,9 +316,9 @@ namespace GraphManipulator
             return false;
         }
 
-        public bool AddEdge(string predecessorVertexName, string successorVertexName)
+        public bool AddEdge(string predecessorVertexName, string successorVertexName, int? weight)
         {
-            return AddEdge(Vertices[GetVertexIndexInVertices(predecessorVertexName)], Vertices[GetVertexIndexInVertices(successorVertexName)]);
+            return AddEdge(Vertices[GetVertexIndexInVertices(predecessorVertexName)], Vertices[GetVertexIndexInVertices(successorVertexName)], weight);
         }
 
         public string GetVertexPredecessors(string vertexName)
@@ -344,10 +352,12 @@ namespace GraphManipulator
             {
                 Edges.RemoveAt(indexEdgeToRemove);
 
-                UpdateAdjacencyMatrix();
-                AdjacencyList[predecessorVertexName].Remove(successorVertexName);
-                if (!IsDirectGraph && predecessorVertexName != successorVertexName) AdjacencyList[successorVertexName].Remove(predecessorVertexName);
 
+                AdjacencyList[predecessorVertexName].RemoveAll(pair => pair.Item1 == successorVertexName);
+                if (!IsDirectGraph && predecessorVertexName != successorVertexName)
+                    AdjacencyList[successorVertexName].RemoveAll(pair => pair.Item1 == predecessorVertexName);
+
+                UpdateAdjacencyMatrix();
                 return true;
             }
             return false;
@@ -374,12 +384,14 @@ namespace GraphManipulator
             public string Name { get; set; }
             public Vertex Predecessor { get; set; }
             public Vertex Successor { get; set; }
+            public int? Weight { get; set; }
 
-            public Edge(string name, Vertex predecessor, Vertex successor)
+            public Edge(string name, Vertex predecessor, Vertex successor, int? weight)
             {
                 Name = name;
                 Predecessor = predecessor;
                 Successor = successor;
+                Weight = weight;
             }
         }
         #endregion
@@ -396,12 +408,12 @@ namespace GraphManipulator
                 visited[vertex.Name] = false;
             }
 
-            DeepSearch(startVertex, targetVertex, visited, path);
+            DeepSearch(startVertex, targetVertex, visited, path, 0);
 
             return path;
         }
         // teste
-        private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path)
+        private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path, int currentCost)
         {
             visited[currentVertex] = true;
             path.Add(currentVertex);
@@ -411,11 +423,11 @@ namespace GraphManipulator
                 return true;
             }
 
-            foreach (var neighbor in AdjacencyList[currentVertex])
+            foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
             {
                 if (!visited[neighbor])
                 {
-                    if (DeepSearch(neighbor, targetVertex, visited, path))
+                    if (DeepSearch(neighbor, targetVertex, visited, path, currentCost + weight))
                     {
                         return true;
                     }
@@ -429,18 +441,18 @@ namespace GraphManipulator
 
 
         // Função recursiva para busca em profundidade
-        private void DepthSearchUtil(string vertex, Dictionary<string, bool> visited, List<string> visitedVertices)
+        private void DepthSearchUtil(string vertex, Dictionary<string, bool> visited, List<string> visitedVertices, int currentCost)
         {
             // Marca o vértice atual como visitado e o imprime
             visited[vertex] = true;
             visitedVertices.Add(vertex);
 
             // Percorre todos os vértices adjacentes ao vértice atual
-            foreach (var adjacentVertex in AdjacencyList[vertex])
+            foreach (var (adjacentVertex, weight) in AdjacencyList[vertex])
             {
                 if (!visited[adjacentVertex])
                 {
-                    DepthSearchUtil(adjacentVertex, visited, visitedVertices);
+                    DepthSearchUtil(adjacentVertex, visited, visitedVertices, currentCost + weight);
                 }
             }
         }
@@ -462,7 +474,8 @@ namespace GraphManipulator
             {
                 if (!visited[vertex.Name])
                 {
-                    DepthSearchUtil(vertex.Name, visited, visitedVertices);
+                    int currentCost = 0;
+                    DepthSearchUtil(vertex.Name, visited, visitedVertices, currentCost);
                 }
             }
 
@@ -474,7 +487,7 @@ namespace GraphManipulator
         public List<string> BreadthSearch(string startVertex)
         {
             List<string> visitedVertices = new List<string>();
-            Queue<string> queue = new Queue<string>();
+            Queue<(string, int)> queue = new Queue<(string, int)>();
 
             Dictionary<string, bool> visited = new Dictionary<string, bool>();
             foreach (var vertex in Vertices)
@@ -482,20 +495,20 @@ namespace GraphManipulator
                 visited[vertex.Name] = false;
             }
 
-            queue.Enqueue(startVertex);
+            queue.Enqueue((startVertex, 0));
             visited[startVertex] = true;
 
             while (queue.Count != 0)
             {
-                string currentVertex = queue.Dequeue();
+                var (currentVertex, currentCost) = queue.Dequeue();
                 visitedVertices.Add(currentVertex);
 
-                foreach (var adjacentVertex in AdjacencyList[currentVertex])
+                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
                 {
                     if (!visited[adjacentVertex])
                     {
                         visited[adjacentVertex] = true;
-                        queue.Enqueue(adjacentVertex);
+                        queue.Enqueue((adjacentVertex, currentCost + weight));
                     }
                 }
             }
@@ -507,7 +520,7 @@ namespace GraphManipulator
         public List<string> BreadthSearch()
         {
             List<string> visitedVertices = new List<string>();
-            Queue<string> queue = new Queue<string>();
+            Queue<(string, int)> queue = new Queue<(string, int)>();
 
             Dictionary<string, bool> visited = new Dictionary<string, bool>();
             foreach (var vertex in Vertices)
@@ -520,20 +533,20 @@ namespace GraphManipulator
             int randomIndex = rand.Next(0, Vertices.Count);
             string startVertex = Vertices[randomIndex].Name;
 
-            queue.Enqueue(startVertex);
+            queue.Enqueue((startVertex, 0));
             visited[startVertex] = true;
 
             while (queue.Count != 0)
             {
-                string currentVertex = queue.Dequeue();
+                var (currentVertex, currentCost) = queue.Dequeue();
                 visitedVertices.Add(currentVertex);
 
-                foreach (var adjacentVertex in AdjacencyList[currentVertex])
+                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
                 {
                     if (!visited[adjacentVertex])
                     {
                         visited[adjacentVertex] = true;
-                        queue.Enqueue(adjacentVertex);
+                        queue.Enqueue((adjacentVertex, currentCost + weight));
                     }
                 }
             }
@@ -574,7 +587,7 @@ namespace GraphManipulator
         {
             visited[vertex] = true;
 
-            foreach (var adjacentVertex in AdjacencyList[vertex])
+            foreach (var (adjacentVertex, weight) in AdjacencyList[vertex])
             {
                 if (!visited[adjacentVertex])
                 {
@@ -601,7 +614,8 @@ namespace GraphManipulator
             }
 
             // Verifica se todos os vértices foram visitados
-            return visitedVertices.Count == Vertices.Count;
+            bool isConected = visitedVertices.Count == Vertices.Count;
+            return isConected;
         }
     }
 }

@@ -55,6 +55,7 @@
             chb_directedGraph = new CheckBox();
             btn_Start = new Button();
             panel3 = new Panel();
+            button1 = new Button();
             panel4 = new Panel();
             label9 = new Label();
             cb_av_selectVertex = new ComboBox();
@@ -82,7 +83,8 @@
             lb_Entrace = new Label();
             lb_ResultInVertexDegree = new Label();
             lb_ResultOutVertexDegree = new Label();
-            button1 = new Button();
+            label14 = new Label();
+            cb_inputSucessorEdge = new RichTextBox();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyMatrix).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyList).BeginInit();
             panel2.SuspendLayout();
@@ -116,7 +118,7 @@
             dgv_adjacencyMatrix.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_adjacencyMatrix.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             dgv_adjacencyMatrix.RowTemplate.Height = 25;
-            dgv_adjacencyMatrix.Size = new Size(926, 733);
+            dgv_adjacencyMatrix.Size = new Size(926, 926);
             dgv_adjacencyMatrix.TabIndex = 0;
             dgv_adjacencyMatrix.Visible = false;
             // 
@@ -244,7 +246,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(141, 39);
+            label5.Location = new Point(95, 39);
             label5.Name = "label5";
             label5.Size = new Size(56, 15);
             label5.TabIndex = 16;
@@ -303,6 +305,8 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(cb_inputSucessorEdge);
+            panel2.Controls.Add(label14);
             panel2.Controls.Add(cb_selectSucessorEdge);
             panel2.Controls.Add(cb_selectPredecessorEdge);
             panel2.Controls.Add(label4);
@@ -319,9 +323,9 @@
             cb_selectSucessorEdge.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_selectSucessorEdge.Enabled = false;
             cb_selectSucessorEdge.FormattingEnabled = true;
-            cb_selectSucessorEdge.Location = new Point(141, 57);
+            cb_selectSucessorEdge.Location = new Point(95, 57);
             cb_selectSucessorEdge.Name = "cb_selectSucessorEdge";
-            cb_selectSucessorEdge.Size = new Size(100, 23);
+            cb_selectSucessorEdge.Size = new Size(68, 23);
             cb_selectSucessorEdge.TabIndex = 27;
             cb_selectSucessorEdge.DropDown += cb_selectSucessorEdge_DropDown;
             cb_selectSucessorEdge.SelectedIndexChanged += cb_selectSucessorEdge_SelectedIndexChanged;
@@ -333,7 +337,7 @@
             cb_selectPredecessorEdge.FormattingEnabled = true;
             cb_selectPredecessorEdge.Location = new Point(8, 57);
             cb_selectPredecessorEdge.Name = "cb_selectPredecessorEdge";
-            cb_selectPredecessorEdge.Size = new Size(100, 23);
+            cb_selectPredecessorEdge.Size = new Size(72, 23);
             cb_selectPredecessorEdge.TabIndex = 26;
             cb_selectPredecessorEdge.DropDown += cb_selectPredecessorEdge_DropDown;
             cb_selectPredecessorEdge.SelectedIndexChanged += cb_selectPredecessorEdge_SelectedIndexChanged;
@@ -387,6 +391,16 @@
             panel3.Name = "panel3";
             panel3.Size = new Size(317, 401);
             panel3.TabIndex = 31;
+            // 
+            // button1
+            // 
+            button1.Location = new Point(20, 227);
+            button1.Name = "button1";
+            button1.Size = new Size(234, 23);
+            button1.TabIndex = 29;
+            button1.Text = "Busca em profundidade";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
             // 
             // panel4
             // 
@@ -495,7 +509,7 @@
             cb_VertexNeighborhood.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_VertexNeighborhood.Enabled = false;
             cb_VertexNeighborhood.FormattingEnabled = true;
-            cb_VertexNeighborhood.Location = new Point(399, 824);
+            cb_VertexNeighborhood.Location = new Point(399, 921);
             cb_VertexNeighborhood.Name = "cb_VertexNeighborhood";
             cb_VertexNeighborhood.Size = new Size(100, 23);
             cb_VertexNeighborhood.TabIndex = 28;
@@ -506,7 +520,7 @@
             // 
             label11.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label11.AutoSize = true;
-            label11.Location = new Point(782, 827);
+            label11.Location = new Point(782, 924);
             label11.Name = "label11";
             label11.Size = new Size(122, 15);
             label11.TabIndex = 34;
@@ -516,7 +530,7 @@
             // 
             lb_Neighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Neighborhood.AutoSize = true;
-            lb_Neighborhood.Location = new Point(910, 827);
+            lb_Neighborhood.Location = new Point(910, 924);
             lb_Neighborhood.Name = "lb_Neighborhood";
             lb_Neighborhood.Size = new Size(0, 15);
             lb_Neighborhood.TabIndex = 35;
@@ -527,7 +541,7 @@
             lb_ResultSimpleGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultSimpleGraph.AutoSize = true;
             lb_ResultSimpleGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultSimpleGraph.Location = new Point(367, 881);
+            lb_ResultSimpleGraph.Location = new Point(367, 978);
             lb_ResultSimpleGraph.Name = "lb_ResultSimpleGraph";
             lb_ResultSimpleGraph.Size = new Size(0, 25);
             lb_ResultSimpleGraph.TabIndex = 36;
@@ -537,7 +551,7 @@
             lb_ResultRegularGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultRegularGraph.AutoSize = true;
             lb_ResultRegularGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultRegularGraph.Location = new Point(563, 881);
+            lb_ResultRegularGraph.Location = new Point(563, 978);
             lb_ResultRegularGraph.Name = "lb_ResultRegularGraph";
             lb_ResultRegularGraph.Size = new Size(0, 25);
             lb_ResultRegularGraph.TabIndex = 37;
@@ -547,7 +561,7 @@
             lb_ResultCompleteGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultCompleteGraph.AutoSize = true;
             lb_ResultCompleteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultCompleteGraph.Location = new Point(758, 881);
+            lb_ResultCompleteGraph.Location = new Point(758, 978);
             lb_ResultCompleteGraph.Name = "lb_ResultCompleteGraph";
             lb_ResultCompleteGraph.Size = new Size(0, 25);
             lb_ResultCompleteGraph.TabIndex = 38;
@@ -557,7 +571,7 @@
             lb_ResultBipartiteGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultBipartiteGraph.AutoSize = true;
             lb_ResultBipartiteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultBipartiteGraph.Location = new Point(964, 881);
+            lb_ResultBipartiteGraph.Location = new Point(964, 978);
             lb_ResultBipartiteGraph.Name = "lb_ResultBipartiteGraph";
             lb_ResultBipartiteGraph.Size = new Size(0, 25);
             lb_ResultBipartiteGraph.TabIndex = 39;
@@ -566,7 +580,7 @@
             // 
             label12.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label12.AutoSize = true;
-            label12.Location = new Point(348, 827);
+            label12.Location = new Point(348, 924);
             label12.Name = "label12";
             label12.Size = new Size(45, 15);
             label12.TabIndex = 40;
@@ -576,7 +590,7 @@
             // 
             label13.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             label13.AutoSize = true;
-            label13.Location = new Point(505, 827);
+            label13.Location = new Point(505, 924);
             label13.Name = "label13";
             label13.Size = new Size(90, 15);
             label13.TabIndex = 41;
@@ -586,7 +600,7 @@
             // 
             lb_ResultVertexDegree.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultVertexDegree.AutoSize = true;
-            lb_ResultVertexDegree.Location = new Point(601, 827);
+            lb_ResultVertexDegree.Location = new Point(601, 924);
             lb_ResultVertexDegree.Name = "lb_ResultVertexDegree";
             lb_ResultVertexDegree.Size = new Size(0, 15);
             lb_ResultVertexDegree.TabIndex = 42;
@@ -596,7 +610,7 @@
             // 
             lb_Predecessor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Predecessor.AutoSize = true;
-            lb_Predecessor.Location = new Point(910, 827);
+            lb_Predecessor.Location = new Point(910, 924);
             lb_Predecessor.Name = "lb_Predecessor";
             lb_Predecessor.Size = new Size(84, 15);
             lb_Predecessor.TabIndex = 43;
@@ -607,7 +621,7 @@
             // 
             lb_Successor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Successor.AutoSize = true;
-            lb_Successor.Location = new Point(927, 842);
+            lb_Successor.Location = new Point(927, 939);
             lb_Successor.Name = "lb_Successor";
             lb_Successor.Size = new Size(67, 15);
             lb_Successor.TabIndex = 44;
@@ -618,7 +632,7 @@
             // 
             lb_ResultPredecessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultPredecessorNeighborhood.AutoSize = true;
-            lb_ResultPredecessorNeighborhood.Location = new Point(1000, 827);
+            lb_ResultPredecessorNeighborhood.Location = new Point(1000, 924);
             lb_ResultPredecessorNeighborhood.Name = "lb_ResultPredecessorNeighborhood";
             lb_ResultPredecessorNeighborhood.Size = new Size(0, 15);
             lb_ResultPredecessorNeighborhood.TabIndex = 45;
@@ -628,7 +642,7 @@
             // 
             lb_ResultSuccessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_ResultSuccessorNeighborhood.AutoSize = true;
-            lb_ResultSuccessorNeighborhood.Location = new Point(1000, 842);
+            lb_ResultSuccessorNeighborhood.Location = new Point(1000, 939);
             lb_ResultSuccessorNeighborhood.Name = "lb_ResultSuccessorNeighborhood";
             lb_ResultSuccessorNeighborhood.Size = new Size(0, 15);
             lb_ResultSuccessorNeighborhood.TabIndex = 46;
@@ -638,7 +652,7 @@
             // 
             lb_Exit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Exit.AutoSize = true;
-            lb_Exit.Location = new Point(613, 842);
+            lb_Exit.Location = new Point(613, 939);
             lb_Exit.Name = "lb_Exit";
             lb_Exit.Size = new Size(38, 15);
             lb_Exit.TabIndex = 48;
@@ -649,7 +663,7 @@
             // 
             lb_Entrace.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             lb_Entrace.AutoSize = true;
-            lb_Entrace.Location = new Point(601, 827);
+            lb_Entrace.Location = new Point(601, 924);
             lb_Entrace.Name = "lb_Entrace";
             lb_Entrace.Size = new Size(50, 15);
             lb_Entrace.TabIndex = 47;
@@ -674,22 +688,30 @@
             lb_ResultOutVertexDegree.TabIndex = 50;
             lb_ResultOutVertexDegree.Visible = false;
             // 
-            // button1
+            // label14
             // 
-            button1.Enabled = true;
-            button1.Location = new Point(20, 227);
-            button1.Name = "button1";
-            button1.Size = new Size(234, 23);
-            button1.TabIndex = 29;
-            button1.Text = "Busca em profundidade";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            label14.AutoSize = true;
+            label14.Location = new Point(185, 39);
+            label14.Name = "label14";
+            label14.Size = new Size(35, 15);
+            label14.TabIndex = 28;
+            label14.Text = "Peso:";
+            // 
+            // cb_inputSucessorEdge
+            // 
+            cb_inputSucessorEdge.Location = new Point(184, 57);
+            cb_inputSucessorEdge.Multiline = false;
+            cb_inputSucessorEdge.Name = "cb_inputSucessorEdge";
+            cb_inputSucessorEdge.Size = new Size(57, 23);
+            cb_inputSucessorEdge.TabIndex = 29;
+            cb_inputSucessorEdge.Text = "";
+            cb_inputSucessorEdge.KeyPress += cb_inputSucessorEdge_TextChanged;
             // 
             // GraphManipulatorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1273, 637);
+            ClientSize = new Size(1273, 830);
             Controls.Add(lb_ResultOutVertexDegree);
             Controls.Add(lb_ResultInVertexDegree);
             Controls.Add(lb_Exit);
@@ -789,5 +811,7 @@
         private Label lb_ResultInVertexDegree;
         private Label lb_ResultOutVertexDegree;
         private Button button1;
+        private Label label14;
+        private RichTextBox cb_inputSucessorEdge;
     }
 }
