@@ -513,6 +513,10 @@ namespace GraphManipulator
             graph.BreadthSearch("A");
             graph.BreadthSearch();
 
+            Graph subgraph = new Graph(graph.IsDirectGraph);
+
+            
+
             lbl_TopologicalOrdering.Text = "";
             var topologicalOrdering = graph.TopologicalSort();
 
@@ -530,8 +534,13 @@ namespace GraphManipulator
                 //var subgraph = graph.KruskalMST();
                 //UpdateDgvMSTAdjacencyList(subgraph);
 
-                graph.PrimMST();
-                
+                subgraph = graph.MSTPrim("A");
+                UpdateDgvMSTAdjacencyList(subgraph);
+
+                subgraph = graph.Dijkstra("A");
+                UpdateDgvDijkstraAdjacencyList(subgraph);
+
+
 
                 var path = graph.DijkstraShortestPath("A", "C");
                 lbl_MinPath.Text = "";
@@ -556,35 +565,76 @@ namespace GraphManipulator
         // apagar depois
         private void UpdateDgvMSTAdjacencyList(Graph graph)
         {
+            // Limpar colunas e linhas
             gdv_MST.Columns.Clear();
             gdv_MST.Rows.Clear();
 
-            foreach (var vertex in this.graph.AdjacencyList.Keys)
+            // Adicionar cabeçalhos de coluna (vértices)
+            foreach (var vertex in graph.AdjacencyList.Keys)
             {
                 DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
                 column.HeaderText = vertex;
                 gdv_MST.Columns.Add(column);
             }
 
+            // Adicionar cabeçalhos de linha
+            foreach (var vertex in graph.AdjacencyList.Keys)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                //row.HeaderCell.Value = vertex;
+                gdv_MST.Rows.Add(row);
+            }
+
+            // Preencher células com os vizinhos de cada vértice
             int columnIndex = 0;
-            foreach (var vertex in this.graph.AdjacencyList.Keys)
+            foreach (var vertex in graph.AdjacencyList.Keys)
             {
                 int rowIndex = 0;
-
-                foreach (var neighbor in this.graph.AdjacencyList[vertex])
+                foreach (var neighbor in graph.AdjacencyList[vertex])
                 {
-
-                    if (gdv_MST.Rows.Count < rowIndex + 1)
-                        gdv_MST.Rows.Add();
-
-                    gdv_MST.Rows[rowIndex].Cells[columnIndex].Value = neighbor;
-
-
+                    gdv_MST.Rows[rowIndex].Cells[columnIndex].Value = $"{neighbor.Item1}, {neighbor.Item2}";
                     rowIndex++;
-
                 }
                 columnIndex++;
             }
         }
+
+
+        private void UpdateDgvDijkstraAdjacencyList(Graph graph)
+        {
+            // Limpar colunas e linhas
+            gdv_MST.Columns.Clear();
+            gdv_MST.Rows.Clear();
+
+            // Adicionar cabeçalhos de coluna (vértices)
+            foreach (var vertex in graph.AdjacencyList.Keys)
+            {
+                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                column.HeaderText = vertex;
+                dgv_Dijkstra.Columns.Add(column);
+            }
+
+            // Adicionar cabeçalhos de linha
+            foreach (var vertex in graph.AdjacencyList.Keys)
+            {
+                DataGridViewRow row = new DataGridViewRow();
+                //row.HeaderCell.Value = vertex;
+                dgv_Dijkstra.Rows.Add(row);
+            }
+
+            // Preencher células com os vizinhos de cada vértice
+            int columnIndex = 0;
+            foreach (var vertex in graph.AdjacencyList.Keys)
+            {
+                int rowIndex = 0;
+                foreach (var neighbor in graph.AdjacencyList[vertex])
+                {
+                    dgv_Dijkstra.Rows[rowIndex].Cells[columnIndex].Value = $"{neighbor.Item1}, {neighbor.Item2}";
+                    rowIndex++;
+                }
+                columnIndex++;
+            }
+        }
+
     }
 }

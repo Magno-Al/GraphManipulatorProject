@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgv_adjacencyMatrix = new DataGridView();
             btn_addEdge = new Button();
             label3 = new Label();
@@ -92,10 +94,10 @@
             lbl_TotalWeight = new Label();
             lbl_MinPath = new Label();
             tabPage5 = new TabPage();
-            button3 = new Button();
             button2 = new Button();
             gdv_MST = new DataGridView();
             lbl_isConected = new Label();
+            dgv_Dijkstra = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyMatrix).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyList).BeginInit();
             panel2.SuspendLayout();
@@ -111,6 +113,7 @@
             tabPage4.SuspendLayout();
             tabPage5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)gdv_MST).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_Dijkstra).BeginInit();
             SuspendLayout();
             // 
             // dgv_adjacencyMatrix
@@ -125,16 +128,16 @@
             dgv_adjacencyMatrix.Location = new Point(6, 6);
             dgv_adjacencyMatrix.Name = "dgv_adjacencyMatrix";
             dgv_adjacencyMatrix.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.Control;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.Format = "N2";
-            dataGridViewCellStyle4.NullValue = null;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgv_adjacencyMatrix.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dgv_adjacencyMatrix.RowHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgv_adjacencyMatrix.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             dgv_adjacencyMatrix.RowTemplate.Height = 25;
             dgv_adjacencyMatrix.Size = new Size(704, 610);
@@ -168,23 +171,23 @@
             dgv_adjacencyList.AllowUserToResizeColumns = false;
             dgv_adjacencyList.AllowUserToResizeRows = false;
             dgv_adjacencyList.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = SystemColors.Control;
-            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle5.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.True;
-            dgv_adjacencyList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgv_adjacencyList.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgv_adjacencyList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle6.BackColor = SystemColors.Window;
-            dataGridViewCellStyle6.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle6.ForeColor = SystemColors.ControlText;
-            dataGridViewCellStyle6.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
-            dgv_adjacencyList.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.BackColor = SystemColors.Window;
+            dataGridViewCellStyle3.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle3.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = DataGridViewTriState.False;
+            dgv_adjacencyList.DefaultCellStyle = dataGridViewCellStyle3;
             dgv_adjacencyList.Location = new Point(6, 7);
             dgv_adjacencyList.Name = "dgv_adjacencyList";
             dgv_adjacencyList.ReadOnly = true;
@@ -758,6 +761,7 @@
             // 
             // tabPage4
             // 
+            tabPage4.Controls.Add(dgv_Dijkstra);
             tabPage4.Controls.Add(lbl_TotalWeight);
             tabPage4.Controls.Add(lbl_MinPath);
             tabPage4.Location = new Point(4, 24);
@@ -772,7 +776,7 @@
             // 
             lbl_TotalWeight.AutoSize = true;
             lbl_TotalWeight.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_TotalWeight.Location = new Point(31, 113);
+            lbl_TotalWeight.Location = new Point(41, 403);
             lbl_TotalWeight.Name = "lbl_TotalWeight";
             lbl_TotalWeight.Size = new Size(110, 25);
             lbl_TotalWeight.TabIndex = 1;
@@ -782,7 +786,7 @@
             // 
             lbl_MinPath.AutoSize = true;
             lbl_MinPath.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lbl_MinPath.Location = new Point(31, 67);
+            lbl_MinPath.Location = new Point(54, 360);
             lbl_MinPath.Name = "lbl_MinPath";
             lbl_MinPath.Size = new Size(65, 25);
             lbl_MinPath.TabIndex = 0;
@@ -790,7 +794,6 @@
             // 
             // tabPage5
             // 
-            tabPage5.Controls.Add(button3);
             tabPage5.Controls.Add(button2);
             tabPage5.Controls.Add(gdv_MST);
             tabPage5.Location = new Point(4, 24);
@@ -799,15 +802,6 @@
             tabPage5.TabIndex = 2;
             tabPage5.Text = "AGM";
             tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // button3
-            // 
-            button3.Location = new Point(93, 19);
-            button3.Name = "button3";
-            button3.Size = new Size(75, 23);
-            button3.TabIndex = 2;
-            button3.Text = "Kruskal";
-            button3.UseVisualStyleBackColor = true;
             // 
             // button2
             // 
@@ -837,6 +831,39 @@
             lbl_isConected.Size = new Size(17, 25);
             lbl_isConected.TabIndex = 53;
             lbl_isConected.Text = "l";
+            // 
+            // dgv_Dijkstra
+            // 
+            dgv_Dijkstra.AllowUserToAddRows = false;
+            dgv_Dijkstra.AllowUserToDeleteRows = false;
+            dgv_Dijkstra.AllowUserToResizeColumns = false;
+            dgv_Dijkstra.AllowUserToResizeRows = false;
+            dgv_Dijkstra.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = SystemColors.Control;
+            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
+            dgv_Dijkstra.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dgv_Dijkstra.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = SystemColors.Window;
+            dataGridViewCellStyle5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle5.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle5.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = DataGridViewTriState.False;
+            dgv_Dijkstra.DefaultCellStyle = dataGridViewCellStyle5;
+            dgv_Dijkstra.Location = new Point(0, 0);
+            dgv_Dijkstra.Name = "dgv_Dijkstra";
+            dgv_Dijkstra.ReadOnly = true;
+            dgv_Dijkstra.RowHeadersVisible = false;
+            dgv_Dijkstra.RowHeadersWidth = 20;
+            dgv_Dijkstra.RowTemplate.Height = 25;
+            dgv_Dijkstra.Size = new Size(523, 301);
+            dgv_Dijkstra.TabIndex = 13;
             // 
             // GraphManipulatorForm
             // 
@@ -891,6 +918,7 @@
             tabPage4.PerformLayout();
             tabPage5.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)gdv_MST).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_Dijkstra).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -960,7 +988,7 @@
         private Label lbl_isConected;
         private TabPage tabPage5;
         private DataGridView gdv_MST;
-        private Button button3;
         private Button button2;
+        private DataGridView dgv_Dijkstra;
     }
 }

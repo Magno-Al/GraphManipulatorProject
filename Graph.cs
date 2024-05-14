@@ -68,17 +68,11 @@ namespace GraphManipulator
             {
                 int row = Vertices.IndexOf(edge.Predecessor);
                 int col = Vertices.IndexOf(edge.Successor);
-
-                //AdjacencyMatrix[row, col] += 1;
-
-                // if (!IsDirectGraph)
-                // AdjacencyMatrix[col, row] += 1;
-
-                // Aqui, você pode definir o peso na matriz de adjacência
-                AdjacencyMatrix[row, col] = edge.Weight ?? 1; // Defina o peso como 1 se for nulo
+                                
+                AdjacencyMatrix[row, col] = edge.Weight ?? 1; 
 
                 if (!IsDirectGraph)
-                    AdjacencyMatrix[col, row] = edge.Weight ?? 1; // Defina o peso como 1 se for nulo
+                    AdjacencyMatrix[col, row] = edge.Weight ?? 1;
             }
         }
 
@@ -167,206 +161,48 @@ namespace GraphManipulator
             if (Vertices.Count == 0)
                 return false;
 
-            Dictionary<string, bool> visited = new Dictionary<string, bool>(); // Dicionário para armazenar se um vértice foi visitado e sua cor (true/false)
-            Dictionary<string, bool> colors = new Dictionary<string, bool>(); // Dicionário para armazenar as cores dos vértices (true/false)
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            Dictionary<string, bool> colors = new Dictionary<string, bool>(); 
 
-            foreach (var vertex in Vertices) // Inicializar todos os vértices como não visitados
+            foreach (var vertex in Vertices) 
             {
                 visited[vertex.Name] = false;
                 colors[vertex.Name] = false;
             }
 
-
-            foreach (var vertex in Vertices) // Percorrer todos os vértices
+            foreach (var vertex in Vertices) 
             {
                 if (!visited[vertex.Name]) // Se o vértice ainda não foi visitado
                 {
-                    Queue<string> queue = new Queue<string>(); // Fila para realizar a travessia em largura (BFS)
-                    queue.Enqueue(vertex.Name); // Adicionar o vértice à fila
-                    colors[vertex.Name] = true; // Colorir o vértice com a cor verdadeira
+                    Queue<string> queue = new Queue<string>(); 
+                    queue.Enqueue(vertex.Name);
+                    colors[vertex.Name] = true; 
 
-                    while (queue.Count > 0) // Enquanto a fila não estiver vazia
+                    while (queue.Count > 0) 
                     {
-                        string currentVertex = queue.Dequeue(); // Remover o vértice da frente da fila
+                        string currentVertex = queue.Dequeue(); 
 
                         foreach (var (neighbor, weight) in AdjacencyList[currentVertex]) // Para cada vizinho do vértice atual
                         {
-                            if (!visited[neighbor]) // Se o vizinho não foi visitado
+                            if (!visited[neighbor]) 
                             {
-                                visited[neighbor] = true; // Marcar o vizinho como visitado
-                                colors[neighbor] = !colors[currentVertex]; // Atribuir ao vizinho a cor oposta ao do vértice atual
-                                queue.Enqueue(neighbor); // Adicionar o vizinho à fila
+                                visited[neighbor] = true; 
+                                colors[neighbor] = !colors[currentVertex]; 
+                                queue.Enqueue(neighbor); 
                             }
                             else if (colors[neighbor] == colors[currentVertex]) // Se o vizinho já foi visitado e tem a mesma cor do vértice atual
                             {
-                                return false; // O grafo não é bipartido, pois existe uma aresta entre vértices com a mesma cor
+                                return false; 
                             }
                         }
                     }
                 }
             }
 
-            return true; // Se todas as arestas foram verificadas e nenhum conflito de cor foi encontrado, o grafo é bipartido
+            return true; 
         }
 
-        // Deep Search with target retuning path
-        public List<string> DeepSearch(string startVertex, string targetVertex)
-        {
-            List<string> path = new List<string>();
-            Dictionary<string, bool> visited = new Dictionary<string, bool>();
-
-            foreach (var vertex in Vertices)
-            {
-                visited[vertex.Name] = false;
-            }
-
-            DeepSearch(startVertex, targetVertex, visited, path, 0);
-
-            return path;
-        }
-        // teste
-        private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path, int currentCost)
-        {
-            visited[currentVertex] = true;
-            path.Add(currentVertex);
-
-            if (currentVertex == targetVertex)
-            {
-                return true;
-            }
-
-            foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
-            {
-                if (!visited[neighbor])
-                {
-                    if (DeepSearch(neighbor, targetVertex, visited, path, currentCost + weight))
-                    {
-                        return true;
-                    }
-                }
-            }
-
-            path.Remove(currentVertex);
-            return false;
-        }
-
-
-
-        // Função recursiva para busca em profundidade
-        private void DepthSearchUtil(string vertex, Dictionary<string, bool> visited, List<string> visitedVertices, int currentCost)
-        {
-            // Marca o vértice atual como visitado e o imprime
-            visited[vertex] = true;
-            visitedVertices.Add(vertex);
-
-            // Percorre todos os vértices adjacentes ao vértice atual
-            foreach (var (adjacentVertex, weight) in AdjacencyList[vertex])
-            {
-                if (!visited[adjacentVertex])
-                {
-                    DepthSearchUtil(adjacentVertex, visited, visitedVertices, currentCost + weight);
-                }
-            }
-        }
-
-        // Função para realizar busca em profundidade
-        public List<string> DepthSearch()
-        {
-            List<string> visitedVertices = new List<string>();
-
-            // Inicializa todos os vértices como não visitados
-            Dictionary<string, bool> visited = new Dictionary<string, bool>();
-            foreach (var vertex in Vertices)
-            {
-                visited[vertex.Name] = false;
-            }
-
-            // Executa a DFS a partir de todos os vértices não visitados
-            foreach (var vertex in Vertices)
-            {
-                if (!visited[vertex.Name])
-                {
-                    int currentCost = 0;
-                    DepthSearchUtil(vertex.Name, visited, visitedVertices, currentCost);
-                }
-            }
-
-            return visitedVertices;
-        }
-
-
-        //Função para realizar busca em largura partindo de um vertice especifico
-        public List<string> BreadthSearch(string startVertex)
-        {
-            List<string> visitedVertices = new List<string>();
-            Queue<(string, int)> queue = new Queue<(string, int)>();
-
-            Dictionary<string, bool> visited = new Dictionary<string, bool>();
-            foreach (var vertex in Vertices)
-            {
-                visited[vertex.Name] = false;
-            }
-
-            queue.Enqueue((startVertex, 0));
-            visited[startVertex] = true;
-
-            while (queue.Count != 0)
-            {
-                var (currentVertex, currentCost) = queue.Dequeue();
-                visitedVertices.Add(currentVertex);
-
-                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
-                {
-                    if (!visited[adjacentVertex])
-                    {
-                        visited[adjacentVertex] = true;
-                        queue.Enqueue((adjacentVertex, currentCost + weight));
-                    }
-                }
-            }
-
-            return visitedVertices;
-        }
-
-        //Função para realizar busca em largura partindo de um vertice aleatorio
-        public List<string> BreadthSearch()
-        {
-            List<string> visitedVertices = new List<string>();
-            Queue<(string, int)> queue = new Queue<(string, int)>();
-
-            Dictionary<string, bool> visited = new Dictionary<string, bool>();
-            foreach (var vertex in Vertices)
-            {
-                visited[vertex.Name] = false;
-            }
-
-            // Escolhe um vértice aleatório para começar a BFS
-            Random rand = new Random();
-            int randomIndex = rand.Next(0, Vertices.Count);
-            string startVertex = Vertices[randomIndex].Name;
-
-            queue.Enqueue((startVertex, 0));
-            visited[startVertex] = true;
-
-            while (queue.Count != 0)
-            {
-                var (currentVertex, currentCost) = queue.Dequeue();
-                visitedVertices.Add(currentVertex);
-
-                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
-                {
-                    if (!visited[adjacentVertex])
-                    {
-                        visited[adjacentVertex] = true;
-                        queue.Enqueue((adjacentVertex, currentCost + weight));
-                    }
-                }
-            }
-
-            return visitedVertices;
-        }
-
-        //Funçao para realizar ordenação topologica
+       
         public List<string> TopologicalSort()
         {
             Stack<string> stack = new Stack<string>();
@@ -394,7 +230,6 @@ namespace GraphManipulator
             return result;
         }
 
-        //Função recursiva para realizar a ordenação topologica
         private void TopologicalSortUtil(string vertex, Dictionary<string, bool> visited, Stack<string> stack)
         {
             visited[vertex] = true;
@@ -410,11 +245,9 @@ namespace GraphManipulator
             stack.Push(vertex);
         }
 
-        // Verifica se o grafo é conexo utilizando busca em largura ou busca em profundidade
         public bool IsConnectedGraph()
         {
 
-            // Realiza a busca em largura (BFS) ou busca em profundidade (DFS)
             List<string> visitedVertices;
             if (!IsDirectGraph)
             {
@@ -425,176 +258,10 @@ namespace GraphManipulator
                 visitedVertices = DepthSearch();
             }
 
-            // Verifica se todos os vértices foram visitados
             bool isConected = visitedVertices.Count == Vertices.Count;
             return isConected;
-        }
-
-        public void KruskalMST()
-        {
-            List<Edge> mst = new List<Edge>(); // Árvore Geradora Mínima
-            DisjointSet disjointSet = new DisjointSet(Vertices.Select(v => v.Name).ToArray()); // Conjunto Disjunto para detectar ciclos
-
-            // Ordena todas as arestas em ordem crescente de peso
-            List<Edge> sortedEdges = Edges.OrderBy(e => e.Weight).ToList();
-
-            foreach (var edge in sortedEdges)
-            {
-                string predecessorSet = disjointSet.Find(edge.Predecessor.Name);
-                string successorSet = disjointSet.Find(edge.Successor.Name);
-
-                // Verifica se a inclusão da aresta não cria um ciclo
-                if (predecessorSet != successorSet)
-                {
-                    mst.Add(edge); // Adiciona a aresta à Árvore Geradora Mínima
-                    disjointSet.Union(predecessorSet, successorSet); // Une os conjuntos dos vértices conectados pela aresta
-                }
-            }
-
-            Console.WriteLine(mst.ToString());
-            // return mst;
-        }
-
-        public void PrimMST()
-        {
-            List<Edge> mst = new List<Edge>(); // Árvore Geradora Mínima
-            HashSet<string> visited = new HashSet<string>(); // Conjunto de vértices já visitados
-            PriorityQueue<Edge> priorityQueue = new PriorityQueue<Edge>(); // Fila de prioridade para arestas
-
-            // Seleciona um vértice inicial (pode ser qualquer um)
-            string startVertex = Vertices[0].Name;
-
-            // Adiciona o vértice inicial ao conjunto de visitados
-            visited.Add(startVertex);
-
-            // Adiciona todas as arestas conectadas ao vértice inicial à fila de prioridade
-            foreach (var edge in Edges)
-            {
-                if (edge.Predecessor.Name == startVertex || edge.Successor.Name == startVertex)
-                {
-                    priorityQueue.Enqueue(edge, edge.Weight ?? 1);
-                }
-            }
-
-            while (priorityQueue.Count > 0)
-            {
-                // Obtém a aresta de menor peso da fila de prioridade
-                Edge minEdge = priorityQueue.Dequeue();
-
-                // Verifica se a aresta forma um ciclo (verifica se o vértice de destino já foi visitado)
-                if (visited.Contains(minEdge.Predecessor.Name) && visited.Contains(minEdge.Successor.Name))
-                {
-                    continue;
-                }
-
-                // Adiciona a aresta à Árvore Geradora Mínima
-                mst.Add(minEdge);
-
-                // Adiciona o vértice de destino ao conjunto de visitados
-                string nextVertex = visited.Contains(minEdge.Predecessor.Name) ? minEdge.Successor.Name : minEdge.Predecessor.Name;
-                visited.Add(nextVertex);
-
-                // Adiciona todas as arestas conectadas ao vértice adicionado à fila de prioridade
-                foreach (var edge in Edges)
-                {
-                    if (edge.Predecessor.Name == nextVertex || edge.Successor.Name == nextVertex)
-                    {
-                        priorityQueue.Enqueue(edge, edge.Weight ?? 1);
-                    }
-                }
-            }
-
-            Console.Write(mst.ToString());
-
-            // return mst;
-        }
-
-        //public Graph MSTPrim(string root)
-        //{
-        //    var edges = new List<Edge>();
-        //    var subgraph = new Graph(IsDirectGraph);
-
-        //    subgraph.AddVertex(root);
-
-        //    while (!subgraph.Vertices.OrderBy(v => v).SequenceEqual(Vertices.OrderBy(v => v)))
-        //    {
-        //        var value =int.MaxValue;
-        //        int j;
-
-        //        for (int i = 0; i < Vertices.Count; i++)
-        //        {
-        //            if (AdjacencyMatrix[GetVertexIndexInVertices(root), i] < value)
-        //            {
-        //                j = i;
-        //            }
-        //        }
-
-        //        subgraph.AddEdge(root, Vertices[j].Name, AdjacencyMatrix[GetVertexIndexInVertices(root), j]);
-        //    }
-
-
-        //    return subgraph;
-        //}
-
-        public (List<string> path, int totalWeight) DijkstraShortestPath(string startVertex, string endVertex)
-        {
-            Dictionary<string, int> distances = new Dictionary<string, int>(); // Dicionário para armazenar as distâncias mínimas até cada vértice
-            Dictionary<string, string> previousVertices = new Dictionary<string, string>(); // Dicionário para armazenar os vértices anteriores no caminho mínimo
-            HashSet<string> visited = new HashSet<string>(); // Conjunto de vértices já visitados
-            PriorityQueue<string> priorityQueue = new PriorityQueue<string>(); // Fila de prioridade para vértices
-
-            // Inicializa as distâncias com infinito e o vértice anterior como nulo para todos os vértices, exceto o vértice inicial
-            foreach (var vertex in Vertices)
-            {
-                distances[vertex.Name] = int.MaxValue;
-                previousVertices[vertex.Name] = null;
-            }
-            distances[startVertex] = 0; // Distância até o vértice inicial é 0
-
-            // Adiciona o vértice inicial à fila de prioridade
-            priorityQueue.Enqueue(startVertex, 0);
-
-            while (priorityQueue.Count > 0)
-            {
-                string currentVertex = priorityQueue.Dequeue(); // Remove o vértice com a menor distância da fila de prioridade
-
-                if (currentVertex == endVertex)
-                {
-                    // Chegamos ao vértice de destino, construímos o caminho mínimo e o retornamos junto com o peso total do caminho
-                    List<string> shortestPath = new List<string>();
-                    int totalWeight = distances[endVertex];
-                    while (previousVertices[currentVertex] != null)
-                    {
-                        shortestPath.Add(currentVertex);
-                        currentVertex = previousVertices[currentVertex];
-                    }
-                    shortestPath.Add(startVertex);
-                    shortestPath.Reverse(); // Reverte a lista para obter o caminho na ordem correta
-                    return (shortestPath, totalWeight);
-                }
-
-                if (visited.Contains(currentVertex))
-                {
-                    continue; // Se o vértice já foi visitado, passa para o próximo vértice
-                }
-
-                visited.Add(currentVertex); // Marca o vértice como visitado
-
-                // Atualiza as distâncias dos vértices adjacentes
-                foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
-                {
-                    int newDistance = distances[currentVertex] + weight;
-                    if (newDistance < distances[neighbor])
-                    {
-                        distances[neighbor] = newDistance;
-                        previousVertices[neighbor] = currentVertex;
-                        priorityQueue.Enqueue(neighbor, newDistance);
-                    }
-                }
-            }
-
-            return (null, 0); // Se o caminho não for encontrado, retorna null e peso total 0
-        }
+        }  
+               
 
 
 
@@ -784,6 +451,327 @@ namespace GraphManipulator
             }
         }
         #endregion
+
+
+        #region Search Methods
+        public List<string> DeepSearch(string startVertex, string targetVertex)
+        {
+            List<string> path = new List<string>();
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            DeepSearch(startVertex, targetVertex, visited, path, 0);
+
+            return path;
+        }      
+        private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path, int currentCost)
+        {
+            visited[currentVertex] = true;
+            path.Add(currentVertex);
+
+            if (currentVertex == targetVertex)
+            {
+                return true;
+            }
+
+            foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
+            {
+                if (!visited[neighbor])
+                {
+                    if (DeepSearch(neighbor, targetVertex, visited, path, currentCost + weight))
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            path.Remove(currentVertex);
+            return false;
+        }
+        private void DepthSearchUtil(string vertex, Dictionary<string, bool> visited, List<string> visitedVertices, int currentCost)
+        {
+            visited[vertex] = true;
+            visitedVertices.Add(vertex);
+
+            foreach (var (adjacentVertex, weight) in AdjacencyList[vertex])
+            {
+                if (!visited[adjacentVertex])
+                {
+                    DepthSearchUtil(adjacentVertex, visited, visitedVertices, currentCost + weight);
+                }
+            }
+        }
+        public List<string> DepthSearch()
+        {
+            List<string> visitedVertices = new List<string>();
+
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            foreach (var vertex in Vertices)
+            {
+                if (!visited[vertex.Name])
+                {
+                    int currentCost = 0;
+                    DepthSearchUtil(vertex.Name, visited, visitedVertices, currentCost);
+                }
+            }
+
+            return visitedVertices;
+        }
+        public List<string> BreadthSearch(string startVertex)
+        {
+            List<string> visitedVertices = new List<string>();
+            Queue<(string, int)> queue = new Queue<(string, int)>();
+
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            queue.Enqueue((startVertex, 0));
+            visited[startVertex] = true;
+
+            while (queue.Count != 0)
+            {
+                var (currentVertex, currentCost) = queue.Dequeue();
+                visitedVertices.Add(currentVertex);
+
+                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
+                {
+                    if (!visited[adjacentVertex])
+                    {
+                        visited[adjacentVertex] = true;
+                        queue.Enqueue((adjacentVertex, currentCost + weight));
+                    }
+                }
+            }
+
+            return visitedVertices;
+        }
+        public List<string> BreadthSearch()
+        {
+            List<string> visitedVertices = new List<string>();
+            Queue<(string, int)> queue = new Queue<(string, int)>();
+
+            Dictionary<string, bool> visited = new Dictionary<string, bool>();
+            foreach (var vertex in Vertices)
+            {
+                visited[vertex.Name] = false;
+            }
+
+            Random rand = new Random();
+            int randomIndex = rand.Next(0, Vertices.Count);
+            string startVertex = Vertices[randomIndex].Name;
+
+            queue.Enqueue((startVertex, 0));
+            visited[startVertex] = true;
+
+            while (queue.Count != 0)
+            {
+                var (currentVertex, currentCost) = queue.Dequeue();
+                visitedVertices.Add(currentVertex);
+
+                foreach (var (adjacentVertex, weight) in AdjacencyList[currentVertex])
+                {
+                    if (!visited[adjacentVertex])
+                    {
+                        visited[adjacentVertex] = true;
+                        queue.Enqueue((adjacentVertex, currentCost + weight));
+                    }
+                }
+            }
+
+            return visitedVertices;
+        }
+      
+        #endregion
+
+
+        #region Subgraph Methods
+        public Graph MSTKruskal()
+        {
+            Graph mstGraph = new Graph(IsDirectGraph);
+
+
+            List<Edge> sortedEdges = Edges.OrderBy(e => e.Weight).ToList();
+
+            foreach (var edge in sortedEdges)
+            {
+
+                mstGraph.AddEdge(edge.Predecessor.Name, edge.Successor.Name, edge.Weight);
+
+                // CRIAR FUNÇÃO PARA VERIFICAR SE O GRAFO TEM CICLO
+                //if (mstGraph.ContainsCycle())
+                //{
+                //    mstGraph.RemoveEdge(edge.Predecessor.Name, edge.Successor.Name);
+                //}
+            }
+
+            return mstGraph;
+        }
+        public Graph MSTPrim(string root)
+        {
+            Graph mstGraph = new Graph(IsDirectGraph);
+            HashSet<string> visited = new HashSet<string>();
+
+            mstGraph.AddVertex(root);
+            visited.Add(root);
+
+            while (visited.Count < Vertices.Count)
+            {
+                int minWeight = int.MaxValue;
+                Edge minEdge = null;
+
+                foreach (var visitedVertex in visited)
+                {
+                    foreach (var (neighbor, weight) in AdjacencyList[visitedVertex])
+                    {
+                        if (!visited.Contains(neighbor) && weight < minWeight)
+                        {
+                            minWeight = weight;
+                            minEdge = new Edge($"{visitedVertex}-{neighbor}", new Vertex(visitedVertex), new Vertex(neighbor), weight);
+                        }
+                    }
+                }
+
+                if (minEdge != null)
+                {
+                    mstGraph.AddVertex(minEdge.Successor.Name);
+                    mstGraph.AddEdge(minEdge.Predecessor.Name, minEdge.Successor.Name, minEdge.Weight);
+                    visited.Add(minEdge.Successor.Name);
+                }
+            }
+
+            return mstGraph;
+        }
+        public (List<string> path, int totalWeight) DijkstraShortestPath(string startVertex, string endVertex)
+        {
+            Dictionary<string, int> distances = new Dictionary<string, int>();
+            Dictionary<string, string> previousVertices = new Dictionary<string, string>();
+            HashSet<string> visited = new HashSet<string>();
+            PriorityQueue<string> priorityQueue = new PriorityQueue<string>();
+
+
+            foreach (var vertex in Vertices)
+            {
+                distances[vertex.Name] = int.MaxValue;
+                previousVertices[vertex.Name] = null;
+            }
+            distances[startVertex] = 0;
+
+
+            priorityQueue.Enqueue(startVertex, 0);
+
+            while (priorityQueue.Count > 0)
+            {
+                string currentVertex = priorityQueue.Dequeue();
+
+                if (currentVertex == endVertex)
+                {
+                    List<string> shortestPath = new List<string>();
+                    int totalWeight = distances[endVertex];
+                    while (previousVertices[currentVertex] != null)
+                    {
+                        shortestPath.Add(currentVertex);
+                        currentVertex = previousVertices[currentVertex];
+                    }
+                    shortestPath.Add(startVertex);
+                    shortestPath.Reverse();
+                    return (shortestPath, totalWeight);
+                }
+
+                if (visited.Contains(currentVertex))
+                {
+                    continue;
+                }
+
+                visited.Add(currentVertex);
+
+
+                foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
+                {
+                    int newDistance = distances[currentVertex] + weight;
+                    if (newDistance < distances[neighbor])
+                    {
+                        distances[neighbor] = newDistance;
+                        previousVertices[neighbor] = currentVertex;
+                        priorityQueue.Enqueue(neighbor, newDistance);
+                    }
+                }
+            }
+
+            return (null, 0);
+        }
+        public Graph Dijkstra(string root)
+        {
+            var distances = new Dictionary<string, int>();
+            var predecessors = new Dictionary<string, string>();
+
+            foreach (var vertex in Vertices)
+            {
+                distances[vertex.Name] = int.MaxValue;
+                predecessors[vertex.Name] = null;
+            }
+            distances[root] = 0;
+
+            var unvisitedVertices = new HashSet<string>(Vertices.Select(v => v.Name));
+
+            while (unvisitedVertices.Count > 0)
+            {
+                var currentVertex = unvisitedVertices.OrderBy(v => distances[v]).First();
+                unvisitedVertices.Remove(currentVertex);
+
+                foreach (var (neighbor, weight) in AdjacencyList[currentVertex])
+                {
+
+                    var newDistance = distances[currentVertex] + weight;
+
+                    if (newDistance < distances[neighbor]) // Relaxação
+                    {
+                        distances[neighbor] = newDistance;
+                        predecessors[neighbor] = currentVertex;
+                    }
+                }
+            }
+
+            // Monta a árvore resultnte 
+            var dijkstraGraph = new Graph(IsDirectGraph);
+
+
+            foreach (var vertex in Vertices)
+            {
+                dijkstraGraph.AddVertex(vertex.Name);
+            }
+
+            foreach (var vertex in Vertices)
+            {
+                if (predecessors[vertex.Name] != null)
+                {
+                    var predecessor = predecessors[vertex.Name];
+                    var weight = distances[vertex.Name];
+                    dijkstraGraph.AddEdge(predecessor, vertex.Name, weight);
+                }
+            }
+
+            return dijkstraGraph;
+        }
+
+        #endregion
+
+
+
+
+
+
 
         #region DisjointSetClass
         // Classe para representar um conjunto disjunto
