@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
 using System.Drawing;
 using System.Linq;
 using System.Security.Policy;
@@ -163,7 +164,7 @@ namespace GraphManipulator
 
         public bool IsBipartiteGraph()
         {
-            if (Vertices.Count == 0) 
+            if (Vertices.Count == 0)
                 return false;
 
             Dictionary<string, bool> visited = new Dictionary<string, bool>(); // Dicionário para armazenar se um vértice foi visitado e sua cor (true/false)
@@ -175,7 +176,7 @@ namespace GraphManipulator
                 colors[vertex.Name] = false;
             }
 
-            
+
             foreach (var vertex in Vertices) // Percorrer todos os vértices
             {
                 if (!visited[vertex.Name]) // Se o vértice ainda não foi visitado
@@ -450,7 +451,7 @@ namespace GraphManipulator
                 }
             }
 
-            Console.Write(mst.ToString());
+            Console.WriteLine(mst.ToString());
             // return mst;
         }
 
@@ -507,6 +508,33 @@ namespace GraphManipulator
 
             // return mst;
         }
+
+        //public Graph MSTPrim(string root)
+        //{
+        //    var edges = new List<Edge>();
+        //    var subgraph = new Graph(IsDirectGraph);
+
+        //    subgraph.AddVertex(root);
+
+        //    while (!subgraph.Vertices.OrderBy(v => v).SequenceEqual(Vertices.OrderBy(v => v)))
+        //    {
+        //        var value =int.MaxValue;
+        //        int j;
+
+        //        for (int i = 0; i < Vertices.Count; i++)
+        //        {
+        //            if (AdjacencyMatrix[GetVertexIndexInVertices(root), i] < value)
+        //            {
+        //                j = i;
+        //            }
+        //        }
+
+        //        subgraph.AddEdge(root, Vertices[j].Name, AdjacencyMatrix[GetVertexIndexInVertices(root), j]);
+        //    }
+
+
+        //    return subgraph;
+        //}
 
         public (List<string> path, int totalWeight) DijkstraShortestPath(string startVertex, string endVertex)
         {
@@ -666,7 +694,7 @@ namespace GraphManipulator
                 Edges.Add(new Edge(edgeName, predecessorVertex, successorVertex, weight));
 
                 AdjacencyList[predecessorVertex.Name].Add((successorVertex.Name, weight ?? 1));
-                if (!IsDirectGraph && predecessorVertex.Name != successorVertex.Name) 
+                if (!IsDirectGraph && predecessorVertex.Name != successorVertex.Name)
                     AdjacencyList[successorVertex.Name].Add((predecessorVertex.Name, weight ?? 1));
 
                 UpdateAdjacencyMatrix();

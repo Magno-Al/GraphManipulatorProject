@@ -33,9 +33,6 @@
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgv_adjacencyMatrix = new DataGridView();
             btn_addEdge = new Button();
-            btn_exhibitionModeList = new Button();
-            btn_exhibitionModeMatrix = new Button();
-            label1 = new Label();
             label3 = new Label();
             dgv_adjacencyList = new DataGridView();
             btn_av_addVertex = new Button();
@@ -48,6 +45,8 @@
             btn_rv_removeVertex = new Button();
             label10 = new Label();
             panel2 = new Panel();
+            cb_inputSucessorEdge = new RichTextBox();
+            label14 = new Label();
             cb_selectSucessorEdge = new ComboBox();
             cb_selectPredecessorEdge = new ComboBox();
             lb_edgeReturn = new Label();
@@ -56,6 +55,7 @@
             btn_Start = new Button();
             panel3 = new Panel();
             button1 = new Button();
+            btn_debug = new Button();
             panel4 = new Panel();
             label9 = new Label();
             cb_av_selectVertex = new ComboBox();
@@ -64,7 +64,6 @@
             btn_GenerateGraph = new Button();
             nup_InitialVertexAmount = new NumericUpDown();
             label2 = new Label();
-            btn_debug = new Button();
             cb_VertexNeighborhood = new ComboBox();
             label11 = new Label();
             lb_Neighborhood = new Label();
@@ -83,8 +82,20 @@
             lb_Entrace = new Label();
             lb_ResultInVertexDegree = new Label();
             lb_ResultOutVertexDegree = new Label();
-            label14 = new Label();
-            cb_inputSucessorEdge = new RichTextBox();
+            tabControl1 = new TabControl();
+            tabPage1 = new TabPage();
+            tabPage2 = new TabPage();
+            tabControl2 = new TabControl();
+            tabPage3 = new TabPage();
+            lbl_TopologicalOrdering = new Label();
+            tabPage4 = new TabPage();
+            lbl_TotalWeight = new Label();
+            lbl_MinPath = new Label();
+            tabPage5 = new TabPage();
+            button3 = new Button();
+            button2 = new Button();
+            gdv_MST = new DataGridView();
+            lbl_isConected = new Label();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyMatrix).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyList).BeginInit();
             panel2.SuspendLayout();
@@ -92,6 +103,14 @@
             panel4.SuspendLayout();
             panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)nup_InitialVertexAmount).BeginInit();
+            tabControl1.SuspendLayout();
+            tabPage1.SuspendLayout();
+            tabPage2.SuspendLayout();
+            tabControl2.SuspendLayout();
+            tabPage3.SuspendLayout();
+            tabPage4.SuspendLayout();
+            tabPage5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)gdv_MST).BeginInit();
             SuspendLayout();
             // 
             // dgv_adjacencyMatrix
@@ -103,7 +122,7 @@
             dgv_adjacencyMatrix.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dgv_adjacencyMatrix.ColumnHeadersHeight = 34;
             dgv_adjacencyMatrix.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-            dgv_adjacencyMatrix.Location = new Point(335, 74);
+            dgv_adjacencyMatrix.Location = new Point(6, 6);
             dgv_adjacencyMatrix.Name = "dgv_adjacencyMatrix";
             dgv_adjacencyMatrix.ReadOnly = true;
             dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
@@ -118,9 +137,8 @@
             dgv_adjacencyMatrix.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             dgv_adjacencyMatrix.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.AutoSizeToFirstHeader;
             dgv_adjacencyMatrix.RowTemplate.Height = 25;
-            dgv_adjacencyMatrix.Size = new Size(926, 926);
+            dgv_adjacencyMatrix.Size = new Size(704, 610);
             dgv_adjacencyMatrix.TabIndex = 0;
-            dgv_adjacencyMatrix.Visible = false;
             // 
             // btn_addEdge
             // 
@@ -132,41 +150,6 @@
             btn_addEdge.Text = "Adicionar aresta";
             btn_addEdge.UseVisualStyleBackColor = true;
             btn_addEdge.Click += btn_addEdge_Click;
-            // 
-            // btn_exhibitionModeList
-            // 
-            btn_exhibitionModeList.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_exhibitionModeList.Enabled = false;
-            btn_exhibitionModeList.Location = new Point(893, 10);
-            btn_exhibitionModeList.Name = "btn_exhibitionModeList";
-            btn_exhibitionModeList.Size = new Size(176, 23);
-            btn_exhibitionModeList.TabIndex = 5;
-            btn_exhibitionModeList.Text = "Lista de Adjacência";
-            btn_exhibitionModeList.UseVisualStyleBackColor = true;
-            btn_exhibitionModeList.Click += btn_exhibitionModeList_Click;
-            // 
-            // btn_exhibitionModeMatrix
-            // 
-            btn_exhibitionModeMatrix.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btn_exhibitionModeMatrix.Enabled = false;
-            btn_exhibitionModeMatrix.Location = new Point(1076, 10);
-            btn_exhibitionModeMatrix.Name = "btn_exhibitionModeMatrix";
-            btn_exhibitionModeMatrix.Size = new Size(176, 23);
-            btn_exhibitionModeMatrix.TabIndex = 6;
-            btn_exhibitionModeMatrix.Text = "Matriz de Adjacência";
-            btn_exhibitionModeMatrix.UseVisualStyleBackColor = true;
-            btn_exhibitionModeMatrix.Click += btn_exhibitionModeMatrix_Click;
-            // 
-            // label1
-            // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label1.Location = new Point(735, 9);
-            label1.Name = "label1";
-            label1.Size = new Size(135, 21);
-            label1.TabIndex = 7;
-            label1.Text = "Modo de exibição:";
             // 
             // label3
             // 
@@ -202,15 +185,14 @@
             dataGridViewCellStyle6.SelectionForeColor = SystemColors.HighlightText;
             dataGridViewCellStyle6.WrapMode = DataGridViewTriState.False;
             dgv_adjacencyList.DefaultCellStyle = dataGridViewCellStyle6;
-            dgv_adjacencyList.Location = new Point(335, 74);
+            dgv_adjacencyList.Location = new Point(6, 7);
             dgv_adjacencyList.Name = "dgv_adjacencyList";
             dgv_adjacencyList.ReadOnly = true;
             dgv_adjacencyList.RowHeadersVisible = false;
             dgv_adjacencyList.RowHeadersWidth = 20;
             dgv_adjacencyList.RowTemplate.Height = 25;
-            dgv_adjacencyList.Size = new Size(926, 733);
+            dgv_adjacencyList.Size = new Size(704, 609);
             dgv_adjacencyList.TabIndex = 12;
-            dgv_adjacencyList.Visible = false;
             // 
             // btn_av_addVertex
             // 
@@ -318,6 +300,25 @@
             panel2.Size = new Size(301, 161);
             panel2.TabIndex = 28;
             // 
+            // cb_inputSucessorEdge
+            // 
+            cb_inputSucessorEdge.Location = new Point(184, 57);
+            cb_inputSucessorEdge.Multiline = false;
+            cb_inputSucessorEdge.Name = "cb_inputSucessorEdge";
+            cb_inputSucessorEdge.Size = new Size(57, 23);
+            cb_inputSucessorEdge.TabIndex = 29;
+            cb_inputSucessorEdge.Text = "";
+            cb_inputSucessorEdge.KeyPress += cb_inputSucessorEdge_TextChanged;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Location = new Point(185, 39);
+            label14.Name = "label14";
+            label14.Size = new Size(35, 15);
+            label14.TabIndex = 28;
+            label14.Text = "Peso:";
+            // 
             // cb_selectSucessorEdge
             // 
             cb_selectSucessorEdge.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -387,6 +388,7 @@
             panel3.Controls.Add(lb_edgeReturn);
             panel3.Controls.Add(label3);
             panel3.Controls.Add(panel2);
+            panel3.Controls.Add(btn_debug);
             panel3.Location = new Point(9, 383);
             panel3.Name = "panel3";
             panel3.Size = new Size(317, 401);
@@ -401,6 +403,17 @@
             button1.Text = "Busca em profundidade";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
+            // 
+            // btn_debug
+            // 
+            btn_debug.Location = new Point(108, 282);
+            btn_debug.Name = "btn_debug";
+            btn_debug.Size = new Size(75, 23);
+            btn_debug.TabIndex = 33;
+            btn_debug.Text = "DEBUG";
+            btn_debug.UseVisualStyleBackColor = true;
+            btn_debug.Visible = false;
+            btn_debug.Click += btn_debug_Click;
             // 
             // panel4
             // 
@@ -492,24 +505,13 @@
             label2.TabIndex = 25;
             label2.Text = "Número de vertices:";
             // 
-            // btn_debug
-            // 
-            btn_debug.Location = new Point(367, 28);
-            btn_debug.Name = "btn_debug";
-            btn_debug.Size = new Size(75, 23);
-            btn_debug.TabIndex = 33;
-            btn_debug.Text = "DEBUG";
-            btn_debug.UseVisualStyleBackColor = true;
-            btn_debug.Visible = false;
-            btn_debug.Click += btn_debug_Click;
-            // 
             // cb_VertexNeighborhood
             // 
-            cb_VertexNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            cb_VertexNeighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             cb_VertexNeighborhood.DropDownStyle = ComboBoxStyle.DropDownList;
             cb_VertexNeighborhood.Enabled = false;
             cb_VertexNeighborhood.FormattingEnabled = true;
-            cb_VertexNeighborhood.Location = new Point(399, 921);
+            cb_VertexNeighborhood.Location = new Point(387, 698);
             cb_VertexNeighborhood.Name = "cb_VertexNeighborhood";
             cb_VertexNeighborhood.Size = new Size(100, 23);
             cb_VertexNeighborhood.TabIndex = 28;
@@ -518,9 +520,9 @@
             // 
             // label11
             // 
-            label11.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label11.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label11.AutoSize = true;
-            label11.Location = new Point(782, 924);
+            label11.Location = new Point(770, 701);
             label11.Name = "label11";
             label11.Size = new Size(122, 15);
             label11.TabIndex = 34;
@@ -528,9 +530,9 @@
             // 
             // lb_Neighborhood
             // 
-            lb_Neighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_Neighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_Neighborhood.AutoSize = true;
-            lb_Neighborhood.Location = new Point(910, 924);
+            lb_Neighborhood.Location = new Point(898, 701);
             lb_Neighborhood.Name = "lb_Neighborhood";
             lb_Neighborhood.Size = new Size(0, 15);
             lb_Neighborhood.TabIndex = 35;
@@ -538,49 +540,49 @@
             // 
             // lb_ResultSimpleGraph
             // 
-            lb_ResultSimpleGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultSimpleGraph.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultSimpleGraph.AutoSize = true;
             lb_ResultSimpleGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultSimpleGraph.Location = new Point(367, 978);
+            lb_ResultSimpleGraph.Location = new Point(355, 755);
             lb_ResultSimpleGraph.Name = "lb_ResultSimpleGraph";
             lb_ResultSimpleGraph.Size = new Size(0, 25);
             lb_ResultSimpleGraph.TabIndex = 36;
             // 
             // lb_ResultRegularGraph
             // 
-            lb_ResultRegularGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultRegularGraph.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultRegularGraph.AutoSize = true;
             lb_ResultRegularGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultRegularGraph.Location = new Point(563, 978);
+            lb_ResultRegularGraph.Location = new Point(551, 755);
             lb_ResultRegularGraph.Name = "lb_ResultRegularGraph";
             lb_ResultRegularGraph.Size = new Size(0, 25);
             lb_ResultRegularGraph.TabIndex = 37;
             // 
             // lb_ResultCompleteGraph
             // 
-            lb_ResultCompleteGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultCompleteGraph.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultCompleteGraph.AutoSize = true;
             lb_ResultCompleteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultCompleteGraph.Location = new Point(758, 978);
+            lb_ResultCompleteGraph.Location = new Point(746, 755);
             lb_ResultCompleteGraph.Name = "lb_ResultCompleteGraph";
             lb_ResultCompleteGraph.Size = new Size(0, 25);
             lb_ResultCompleteGraph.TabIndex = 38;
             // 
             // lb_ResultBipartiteGraph
             // 
-            lb_ResultBipartiteGraph.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultBipartiteGraph.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultBipartiteGraph.AutoSize = true;
             lb_ResultBipartiteGraph.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_ResultBipartiteGraph.Location = new Point(964, 978);
+            lb_ResultBipartiteGraph.Location = new Point(952, 755);
             lb_ResultBipartiteGraph.Name = "lb_ResultBipartiteGraph";
             lb_ResultBipartiteGraph.Size = new Size(0, 25);
             lb_ResultBipartiteGraph.TabIndex = 39;
             // 
             // label12
             // 
-            label12.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label12.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label12.AutoSize = true;
-            label12.Location = new Point(348, 924);
+            label12.Location = new Point(336, 701);
             label12.Name = "label12";
             label12.Size = new Size(45, 15);
             label12.TabIndex = 40;
@@ -588,9 +590,9 @@
             // 
             // label13
             // 
-            label13.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            label13.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             label13.AutoSize = true;
-            label13.Location = new Point(505, 924);
+            label13.Location = new Point(493, 701);
             label13.Name = "label13";
             label13.Size = new Size(90, 15);
             label13.TabIndex = 41;
@@ -598,9 +600,9 @@
             // 
             // lb_ResultVertexDegree
             // 
-            lb_ResultVertexDegree.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultVertexDegree.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultVertexDegree.AutoSize = true;
-            lb_ResultVertexDegree.Location = new Point(601, 924);
+            lb_ResultVertexDegree.Location = new Point(589, 701);
             lb_ResultVertexDegree.Name = "lb_ResultVertexDegree";
             lb_ResultVertexDegree.Size = new Size(0, 15);
             lb_ResultVertexDegree.TabIndex = 42;
@@ -608,9 +610,9 @@
             // 
             // lb_Predecessor
             // 
-            lb_Predecessor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_Predecessor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_Predecessor.AutoSize = true;
-            lb_Predecessor.Location = new Point(910, 924);
+            lb_Predecessor.Location = new Point(898, 701);
             lb_Predecessor.Name = "lb_Predecessor";
             lb_Predecessor.Size = new Size(84, 15);
             lb_Predecessor.TabIndex = 43;
@@ -619,9 +621,9 @@
             // 
             // lb_Successor
             // 
-            lb_Successor.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_Successor.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_Successor.AutoSize = true;
-            lb_Successor.Location = new Point(927, 939);
+            lb_Successor.Location = new Point(915, 716);
             lb_Successor.Name = "lb_Successor";
             lb_Successor.Size = new Size(67, 15);
             lb_Successor.TabIndex = 44;
@@ -630,9 +632,9 @@
             // 
             // lb_ResultPredecessorNeighborhood
             // 
-            lb_ResultPredecessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultPredecessorNeighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultPredecessorNeighborhood.AutoSize = true;
-            lb_ResultPredecessorNeighborhood.Location = new Point(1000, 924);
+            lb_ResultPredecessorNeighborhood.Location = new Point(988, 701);
             lb_ResultPredecessorNeighborhood.Name = "lb_ResultPredecessorNeighborhood";
             lb_ResultPredecessorNeighborhood.Size = new Size(0, 15);
             lb_ResultPredecessorNeighborhood.TabIndex = 45;
@@ -640,9 +642,9 @@
             // 
             // lb_ResultSuccessorNeighborhood
             // 
-            lb_ResultSuccessorNeighborhood.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_ResultSuccessorNeighborhood.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_ResultSuccessorNeighborhood.AutoSize = true;
-            lb_ResultSuccessorNeighborhood.Location = new Point(1000, 939);
+            lb_ResultSuccessorNeighborhood.Location = new Point(988, 716);
             lb_ResultSuccessorNeighborhood.Name = "lb_ResultSuccessorNeighborhood";
             lb_ResultSuccessorNeighborhood.Size = new Size(0, 15);
             lb_ResultSuccessorNeighborhood.TabIndex = 46;
@@ -650,9 +652,9 @@
             // 
             // lb_Exit
             // 
-            lb_Exit.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_Exit.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_Exit.AutoSize = true;
-            lb_Exit.Location = new Point(613, 939);
+            lb_Exit.Location = new Point(601, 716);
             lb_Exit.Name = "lb_Exit";
             lb_Exit.Size = new Size(38, 15);
             lb_Exit.TabIndex = 48;
@@ -661,9 +663,9 @@
             // 
             // lb_Entrace
             // 
-            lb_Entrace.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lb_Entrace.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lb_Entrace.AutoSize = true;
-            lb_Entrace.Location = new Point(601, 924);
+            lb_Entrace.Location = new Point(589, 701);
             lb_Entrace.Name = "lb_Entrace";
             lb_Entrace.Size = new Size(50, 15);
             lb_Entrace.TabIndex = 47;
@@ -672,8 +674,9 @@
             // 
             // lb_ResultInVertexDegree
             // 
+            lb_ResultInVertexDegree.Anchor = AnchorStyles.Bottom;
             lb_ResultInVertexDegree.AutoSize = true;
-            lb_ResultInVertexDegree.Location = new Point(657, 827);
+            lb_ResultInVertexDegree.Location = new Point(645, 295);
             lb_ResultInVertexDegree.Name = "lb_ResultInVertexDegree";
             lb_ResultInVertexDegree.Size = new Size(0, 15);
             lb_ResultInVertexDegree.TabIndex = 49;
@@ -681,37 +684,168 @@
             // 
             // lb_ResultOutVertexDegree
             // 
+            lb_ResultOutVertexDegree.Anchor = AnchorStyles.Bottom;
             lb_ResultOutVertexDegree.AutoSize = true;
-            lb_ResultOutVertexDegree.Location = new Point(657, 842);
+            lb_ResultOutVertexDegree.Location = new Point(645, 310);
             lb_ResultOutVertexDegree.Name = "lb_ResultOutVertexDegree";
             lb_ResultOutVertexDegree.Size = new Size(0, 15);
             lb_ResultOutVertexDegree.TabIndex = 50;
             lb_ResultOutVertexDegree.Visible = false;
             // 
-            // label14
+            // tabControl1
             // 
-            label14.AutoSize = true;
-            label14.Location = new Point(185, 39);
-            label14.Name = "label14";
-            label14.Size = new Size(35, 15);
-            label14.TabIndex = 28;
-            label14.Text = "Peso:";
+            tabControl1.Controls.Add(tabPage1);
+            tabControl1.Controls.Add(tabPage2);
+            tabControl1.Location = new Point(335, 9);
+            tabControl1.Name = "tabControl1";
+            tabControl1.SelectedIndex = 0;
+            tabControl1.Size = new Size(724, 650);
+            tabControl1.TabIndex = 51;
             // 
-            // cb_inputSucessorEdge
+            // tabPage1
             // 
-            cb_inputSucessorEdge.Location = new Point(184, 57);
-            cb_inputSucessorEdge.Multiline = false;
-            cb_inputSucessorEdge.Name = "cb_inputSucessorEdge";
-            cb_inputSucessorEdge.Size = new Size(57, 23);
-            cb_inputSucessorEdge.TabIndex = 29;
-            cb_inputSucessorEdge.Text = "";
-            cb_inputSucessorEdge.KeyPress += cb_inputSucessorEdge_TextChanged;
+            tabPage1.Controls.Add(dgv_adjacencyList);
+            tabPage1.Location = new Point(4, 24);
+            tabPage1.Name = "tabPage1";
+            tabPage1.Padding = new Padding(3);
+            tabPage1.Size = new Size(716, 622);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "Lista de Adjacência";
+            tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            tabPage2.Controls.Add(dgv_adjacencyMatrix);
+            tabPage2.Location = new Point(4, 24);
+            tabPage2.Name = "tabPage2";
+            tabPage2.Padding = new Padding(3);
+            tabPage2.Size = new Size(716, 622);
+            tabPage2.TabIndex = 1;
+            tabPage2.Text = "Matriz de Adjacência";
+            tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // tabControl2
+            // 
+            tabControl2.Controls.Add(tabPage3);
+            tabControl2.Controls.Add(tabPage4);
+            tabControl2.Controls.Add(tabPage5);
+            tabControl2.Location = new Point(1061, 12);
+            tabControl2.Name = "tabControl2";
+            tabControl2.SelectedIndex = 0;
+            tabControl2.Size = new Size(537, 647);
+            tabControl2.TabIndex = 52;
+            // 
+            // tabPage3
+            // 
+            tabPage3.Controls.Add(lbl_TopologicalOrdering);
+            tabPage3.Location = new Point(4, 24);
+            tabPage3.Name = "tabPage3";
+            tabPage3.Padding = new Padding(3);
+            tabPage3.Size = new Size(529, 619);
+            tabPage3.TabIndex = 0;
+            tabPage3.Text = "Ordenação Topológica";
+            tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // lbl_TopologicalOrdering
+            // 
+            lbl_TopologicalOrdering.AutoSize = true;
+            lbl_TopologicalOrdering.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TopologicalOrdering.Location = new Point(21, 87);
+            lbl_TopologicalOrdering.Name = "lbl_TopologicalOrdering";
+            lbl_TopologicalOrdering.Size = new Size(65, 25);
+            lbl_TopologicalOrdering.TabIndex = 0;
+            lbl_TopologicalOrdering.Text = "label1";
+            // 
+            // tabPage4
+            // 
+            tabPage4.Controls.Add(lbl_TotalWeight);
+            tabPage4.Controls.Add(lbl_MinPath);
+            tabPage4.Location = new Point(4, 24);
+            tabPage4.Name = "tabPage4";
+            tabPage4.Padding = new Padding(3);
+            tabPage4.Size = new Size(529, 619);
+            tabPage4.TabIndex = 1;
+            tabPage4.Text = "Caminho Mínimo";
+            tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // lbl_TotalWeight
+            // 
+            lbl_TotalWeight.AutoSize = true;
+            lbl_TotalWeight.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_TotalWeight.Location = new Point(31, 113);
+            lbl_TotalWeight.Name = "lbl_TotalWeight";
+            lbl_TotalWeight.Size = new Size(110, 25);
+            lbl_TotalWeight.TabIndex = 1;
+            lbl_TotalWeight.Text = "Total path: ";
+            // 
+            // lbl_MinPath
+            // 
+            lbl_MinPath.AutoSize = true;
+            lbl_MinPath.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_MinPath.Location = new Point(31, 67);
+            lbl_MinPath.Name = "lbl_MinPath";
+            lbl_MinPath.Size = new Size(65, 25);
+            lbl_MinPath.TabIndex = 0;
+            lbl_MinPath.Text = "label1";
+            // 
+            // tabPage5
+            // 
+            tabPage5.Controls.Add(button3);
+            tabPage5.Controls.Add(button2);
+            tabPage5.Controls.Add(gdv_MST);
+            tabPage5.Location = new Point(4, 24);
+            tabPage5.Name = "tabPage5";
+            tabPage5.Size = new Size(529, 619);
+            tabPage5.TabIndex = 2;
+            tabPage5.Text = "AGM";
+            tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // button3
+            // 
+            button3.Location = new Point(93, 19);
+            button3.Name = "button3";
+            button3.Size = new Size(75, 23);
+            button3.TabIndex = 2;
+            button3.Text = "Kruskal";
+            button3.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(12, 19);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 1;
+            button2.Text = "Prim";
+            button2.UseVisualStyleBackColor = true;
+            // 
+            // gdv_MST
+            // 
+            gdv_MST.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gdv_MST.Location = new Point(3, 81);
+            gdv_MST.Name = "gdv_MST";
+            gdv_MST.RowTemplate.Height = 25;
+            gdv_MST.Size = new Size(523, 532);
+            gdv_MST.TabIndex = 0;
+            // 
+            // lbl_isConected
+            // 
+            lbl_isConected.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lbl_isConected.AutoSize = true;
+            lbl_isConected.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            lbl_isConected.Location = new Point(1334, 759);
+            lbl_isConected.Name = "lbl_isConected";
+            lbl_isConected.Size = new Size(17, 25);
+            lbl_isConected.TabIndex = 53;
+            lbl_isConected.Text = "l";
             // 
             // GraphManipulatorForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1273, 830);
+            ClientSize = new Size(1685, 808);
+            Controls.Add(lbl_isConected);
+            Controls.Add(tabControl2);
+            Controls.Add(tabControl1);
             Controls.Add(lb_ResultOutVertexDegree);
             Controls.Add(lb_ResultInVertexDegree);
             Controls.Add(lb_Exit);
@@ -730,16 +864,10 @@
             Controls.Add(lb_Neighborhood);
             Controls.Add(label11);
             Controls.Add(cb_VertexNeighborhood);
-            Controls.Add(btn_debug);
             Controls.Add(panel5);
             Controls.Add(panel3);
             Controls.Add(btn_Start);
             Controls.Add(chb_directedGraph);
-            Controls.Add(dgv_adjacencyList);
-            Controls.Add(label1);
-            Controls.Add(btn_exhibitionModeMatrix);
-            Controls.Add(btn_exhibitionModeList);
-            Controls.Add(dgv_adjacencyMatrix);
             Name = "GraphManipulatorForm";
             Text = "Grafos";
             ((System.ComponentModel.ISupportInitialize)dgv_adjacencyMatrix).EndInit();
@@ -753,6 +881,16 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)nup_InitialVertexAmount).EndInit();
+            tabControl1.ResumeLayout(false);
+            tabPage1.ResumeLayout(false);
+            tabPage2.ResumeLayout(false);
+            tabControl2.ResumeLayout(false);
+            tabPage3.ResumeLayout(false);
+            tabPage3.PerformLayout();
+            tabPage4.ResumeLayout(false);
+            tabPage4.PerformLayout();
+            tabPage5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)gdv_MST).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -761,9 +899,6 @@
 
         private DataGridView dgv_adjacencyMatrix;
         private Button btn_addEdge;
-        private Button btn_exhibitionModeList;
-        private Button btn_exhibitionModeMatrix;
-        private Label label1;
         private Label label3;
         private DataGridView dgv_adjacencyList;
         private Button btn_av_addVertex;
@@ -813,5 +948,19 @@
         private Button button1;
         private Label label14;
         private RichTextBox cb_inputSucessorEdge;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private TabControl tabControl2;
+        private TabPage tabPage3;
+        private TabPage tabPage4;
+        private Label lbl_TopologicalOrdering;
+        private Label lbl_MinPath;
+        private Label lbl_TotalWeight;
+        private Label lbl_isConected;
+        private TabPage tabPage5;
+        private DataGridView gdv_MST;
+        private Button button3;
+        private Button button2;
     }
 }

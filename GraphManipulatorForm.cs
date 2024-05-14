@@ -5,7 +5,7 @@ namespace GraphManipulator
 {
     public partial class GraphManipulatorForm : Form
     {
-        private Graph Graph { get; set; }
+        private Graph graph { get; set; }
         public GraphManipulatorForm()
         {
             InitializeComponent();
@@ -21,7 +21,7 @@ namespace GraphManipulator
 
         private void ResetEdgesSelectionComboBox()
         {
-            if (Graph.GetAllVerticesNames().Count > 0)
+            if (graph.GetAllVerticesNames().Count > 0)
             {
                 cb_selectPredecessorEdge.Enabled = true;
                 cb_selectSucessorEdge.Enabled = true;
@@ -41,7 +41,7 @@ namespace GraphManipulator
         private void ResetSelectVertexComboBox(ComboBox comboBox)
         {
             comboBox.Items.Clear();
-            comboBox.Items.AddRange(Graph.GetAllVerticesNames().ToArray());
+            comboBox.Items.AddRange(graph.GetAllVerticesNames().ToArray());
         }
 
         private void ResetAddEdgeButton()
@@ -62,10 +62,10 @@ namespace GraphManipulator
             if ((cb_selectPredecessorEdge.Text != null && cb_selectPredecessorEdge.Text != "") &&
                 (cb_selectSucessorEdge.Text != null && cb_selectSucessorEdge.Text != ""))
             {
-                var indexPredecessor = Graph.GetAllVerticesNames().IndexOf(cb_selectPredecessorEdge.Text);
-                var indexSuccessor = Graph.GetAllVerticesNames().IndexOf(cb_selectSucessorEdge.Text);
+                var indexPredecessor = graph.GetAllVerticesNames().IndexOf(cb_selectPredecessorEdge.Text);
+                var indexSuccessor = graph.GetAllVerticesNames().IndexOf(cb_selectSucessorEdge.Text);
 
-                if (Graph.AdjacencyMatrix[indexPredecessor, indexSuccessor] != 0)
+                if (graph.AdjacencyMatrix[indexPredecessor, indexSuccessor] != 0)
                 {
                     btn_removeEdge.Enabled = true;
                 }
@@ -81,7 +81,7 @@ namespace GraphManipulator
             dgv_adjacencyList.Columns.Clear();
             dgv_adjacencyList.Rows.Clear();
 
-            foreach (var vertex in Graph.AdjacencyList.Keys)
+            foreach (var vertex in graph.AdjacencyList.Keys)
             {
                 DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
                 column.HeaderText = vertex;
@@ -89,11 +89,11 @@ namespace GraphManipulator
             }
 
             int columnIndex = 0;
-            foreach (var vertex in Graph.AdjacencyList.Keys)
+            foreach (var vertex in graph.AdjacencyList.Keys)
             {
                 int rowIndex = 0;
 
-                foreach (var neighbor in Graph.AdjacencyList[vertex])
+                foreach (var neighbor in graph.AdjacencyList[vertex])
                 {
 
                     if (dgv_adjacencyList.Rows.Count < rowIndex + 1)
@@ -117,7 +117,7 @@ namespace GraphManipulator
             dgv_adjacencyMatrix.Rows.Clear();
 
             int columnIndex = 0;
-            foreach (var vertex in Graph.GetAllVerticesNames())
+            foreach (var vertex in graph.GetAllVerticesNames())
             {
                 DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
                 column.HeaderText = vertex;
@@ -129,11 +129,11 @@ namespace GraphManipulator
                 columnIndex++;
             }
 
-            for (int i = 0; i < Graph.AdjacencyMatrix.GetLength(1); i++)
+            for (int i = 0; i < graph.AdjacencyMatrix.GetLength(1); i++)
             {
-                for (int j = 0; j < Graph.AdjacencyMatrix.GetLength(0); j++)
+                for (int j = 0; j < graph.AdjacencyMatrix.GetLength(0); j++)
                 {
-                    dgv_adjacencyMatrix.Rows[i].Cells[j].Value = Graph.AdjacencyMatrix[i, j];
+                    dgv_adjacencyMatrix.Rows[i].Cells[j].Value = graph.AdjacencyMatrix[i, j];
                 }
             }
             UpdateGraphAttributes();
@@ -141,10 +141,10 @@ namespace GraphManipulator
 
         private void UpdateGraphAttributes()
         {
-            lb_ResultSimpleGraph.Text = Graph.IsSimpleGraph() ? "Grafo é simples" : "Grafo não é simples";
-            lb_ResultRegularGraph.Text = Graph.IsRegularGraph() ? "Grafo é regular" : "Grafo não é regular";
-            lb_ResultCompleteGraph.Text = Graph.IsCompleteGraph() ? "Grafo é completo" : "Grafo não é completo";
-            lb_ResultBipartiteGraph.Text = Graph.IsBipartiteGraph() ? "Grafo é bipartido" : "Grafo não é bipartido";
+            lb_ResultSimpleGraph.Text = graph.IsSimpleGraph() ? "Grafo é simples" : "Grafo não é simples";
+            lb_ResultRegularGraph.Text = graph.IsRegularGraph() ? "Grafo é regular" : "Grafo não é regular";
+            lb_ResultCompleteGraph.Text = graph.IsCompleteGraph() ? "Grafo é completo" : "Grafo não é completo";
+            lb_ResultBipartiteGraph.Text = graph.IsBipartiteGraph() ? "Grafo é bipartido" : "Grafo não é bipartido";
         }
 
         #endregion
@@ -160,10 +160,7 @@ namespace GraphManipulator
                 dgv_adjacencyList.Rows.Clear();
                 dgv_adjacencyMatrix.Columns.Clear();
                 dgv_adjacencyMatrix.Rows.Clear();
-                Graph = new Graph(chb_directedGraph.Checked);
-
-                btn_exhibitionModeList.Enabled = true;
-                btn_exhibitionModeMatrix.Enabled = true;
+                graph = new Graph(chb_directedGraph.Checked);
 
                 nup_InitialVertexAmount.Enabled = true;
                 btn_GenerateGraph.Enabled = true;
@@ -172,6 +169,9 @@ namespace GraphManipulator
                 lb_ResultBipartiteGraph.Visible = true;
                 lb_ResultCompleteGraph.Visible = true;
                 lb_ResultRegularGraph.Visible = true;
+
+                nup_InitialVertexAmount.Enabled = true;
+                btn_GenerateGraph.Enabled = true;
 
                 if (chb_directedGraph.Checked)
                 {
@@ -211,12 +211,6 @@ namespace GraphManipulator
                 chb_directedGraph.Checked = false;
                 chb_directedGraph.Enabled = true;
                 btn_Start.Text = "Start";
-
-                btn_exhibitionModeList.Enabled = false;
-                btn_exhibitionModeMatrix.Enabled = false;
-
-                dgv_adjacencyList.Visible = false;
-                dgv_adjacencyMatrix.Visible = false;
 
                 nup_InitialVertexAmount.Value = 1;
                 nup_InitialVertexAmount.Enabled = false;
@@ -260,28 +254,12 @@ namespace GraphManipulator
             }
 
         }
-        private void btn_exhibitionModeList_Click(object sender, EventArgs e)
-        {
-            dgv_adjacencyList.Visible = true;
-            dgv_adjacencyMatrix.Visible = false;
-
-            nup_InitialVertexAmount.Enabled = true;
-            btn_GenerateGraph.Enabled = true;
-        }
-        private void btn_exhibitionModeMatrix_Click(object sender, EventArgs e)
-        {
-            dgv_adjacencyList.Visible = false;
-            dgv_adjacencyMatrix.Visible = true;
-
-            nup_InitialVertexAmount.Enabled = true;
-            btn_GenerateGraph.Enabled = true;
-        }
 
         private void btn_av_addVertex_Click(object sender, EventArgs e)
         {
             if (cb_av_selectVertex.Text != "" && cb_av_selectVertex.Text != null)
             {
-                Graph.AddVertex(cb_av_selectVertex.Text);
+                graph.AddVertex(cb_av_selectVertex.Text);
 
                 lb_vertexReturn.Text = $"Vertice {cb_av_selectVertex.Text} adicionado";
 
@@ -302,19 +280,19 @@ namespace GraphManipulator
 
         private void btn_rv_removeVertex_Click(object sender, EventArgs e)
         {
-            if (Graph.GetAllVerticesNames().Count == 1)
+            if (graph.GetAllVerticesNames().Count == 1)
             {
                 lb_vertexReturn.Text = $"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois é o unico vertice do grafo";
                 MessageBox.Show($"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois é o unico vertice do grafo");
             }
-            else if (Graph.GetDegreeVertexNonDirectedGraph(cb_rv_selectVertex.Text) != 0 ||
-                Graph.GetEntraceDegreeVertexDirectedGraph(cb_rv_selectVertex.Text) != 0 ||
-                Graph.GetExitDegreeVertexDirectedGraph(cb_rv_selectVertex.Text) != 0)
+            else if (graph.GetDegreeVertexNonDirectedGraph(cb_rv_selectVertex.Text) != 0 ||
+                graph.GetEntraceDegreeVertexDirectedGraph(cb_rv_selectVertex.Text) != 0 ||
+                graph.GetExitDegreeVertexDirectedGraph(cb_rv_selectVertex.Text) != 0)
             {
                 lb_vertexReturn.Text = $"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois contem aresta(s)";
                 MessageBox.Show($"Vertice {cb_rv_selectVertex.Text} não pode ser removido pois contem aresta(s)");
             }
-            else if (Graph.RemoveVertex(cb_rv_selectVertex.Text))
+            else if (graph.RemoveVertex(cb_rv_selectVertex.Text))
             {
                 lb_vertexReturn.Text = $"Vertice {cb_rv_selectVertex.Text} removido";
 
@@ -378,7 +356,7 @@ namespace GraphManipulator
                     }
                     weight = tempWeight; // Atribua o valor convertido à variável de peso
                 }
-                if (Graph.AddEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text, weight))
+                if (graph.AddEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text, weight))
                 {
                     lb_edgeReturn.Text = $"Aresta {{{cb_selectPredecessorEdge.Text}, {cb_selectSucessorEdge.Text}}} adicionada";
 
@@ -416,7 +394,7 @@ namespace GraphManipulator
             }
             else
             {
-                if (Graph.RemoveEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text))
+                if (graph.RemoveEdge(cb_selectPredecessorEdge.Text, cb_selectSucessorEdge.Text))
                 {
                     lb_edgeReturn.Text = $"Aresta {{{cb_selectPredecessorEdge.Text}, {cb_selectSucessorEdge.Text}}} removida";
 
@@ -448,7 +426,7 @@ namespace GraphManipulator
 
             for (int i = 0; i < nup_InitialVertexAmount.Value; i++)
             {
-                Graph.AddVertex(((char)letter).ToString());
+                graph.AddVertex(((char)letter).ToString());
                 letter++;
             }
 
@@ -463,9 +441,6 @@ namespace GraphManipulator
             btn_GenerateGraph.Enabled = false;
             cb_VertexNeighborhood.Enabled = true;
 
-            dgv_adjacencyList.Visible = true;
-            dgv_adjacencyMatrix.Visible = false;
-
             lb_ResultSimpleGraph.Enabled = true;
             lb_ResultBipartiteGraph.Enabled = true;
             lb_ResultCompleteGraph.Enabled = true;
@@ -476,7 +451,7 @@ namespace GraphManipulator
 
         private void btn_debug_Click(object sender, EventArgs e)
         {
-            var test = Graph;
+            var test = graph;
         }
 
         private void cb_VertexNeighborhood_DropDown(object sender, EventArgs e)
@@ -492,7 +467,7 @@ namespace GraphManipulator
             for (int i = 65; i <= 90; i++)
             {
                 letter = (char)i;
-                if (!Graph.GetAllVerticesNames().Contains(letter.ToString()))
+                if (!graph.GetAllVerticesNames().Contains(letter.ToString()))
                     cb_av_selectVertex.Items.Add(((char)i).ToString());
             }
         }
@@ -515,35 +490,56 @@ namespace GraphManipulator
 
         private void cb_VertexNeighborhood_TextChanged(object sender, EventArgs e)
         {
-            if (Graph.IsDirectGraph)
+            if (graph.IsDirectGraph)
             {
-                lb_ResultPredecessorNeighborhood.Text = Graph.GetVertexPredecessors(cb_VertexNeighborhood.Text);
-                lb_ResultSuccessorNeighborhood.Text = Graph.GetVertexNeighborhood(cb_VertexNeighborhood.Text);
+                lb_ResultPredecessorNeighborhood.Text = graph.GetVertexPredecessors(cb_VertexNeighborhood.Text);
+                lb_ResultSuccessorNeighborhood.Text = graph.GetVertexNeighborhood(cb_VertexNeighborhood.Text);
 
-                lb_ResultInVertexDegree.Text = Graph.GetEntraceDegreeVertexDirectedGraph(cb_VertexNeighborhood.Text).ToString();
-                lb_ResultOutVertexDegree.Text = Graph.GetExitDegreeVertexDirectedGraph(cb_VertexNeighborhood.Text).ToString();
+                lb_ResultInVertexDegree.Text = graph.GetEntraceDegreeVertexDirectedGraph(cb_VertexNeighborhood.Text).ToString();
+                lb_ResultOutVertexDegree.Text = graph.GetExitDegreeVertexDirectedGraph(cb_VertexNeighborhood.Text).ToString();
             }
             else
             {
-                lb_ResultVertexDegree.Text = Graph.GetDegreeVertexNonDirectedGraph(cb_VertexNeighborhood.Text).ToString();
-                lb_Neighborhood.Text = Graph.GetVertexNeighborhood(cb_VertexNeighborhood.Text);
+                lb_ResultVertexDegree.Text = graph.GetDegreeVertexNonDirectedGraph(cb_VertexNeighborhood.Text).ToString();
+                lb_Neighborhood.Text = graph.GetVertexNeighborhood(cb_VertexNeighborhood.Text);
             }
         }
         #endregion
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Graph.DepthSearch();
-            Graph.DeepSearch("A", "F");
-            Graph.BreadthSearch("A");
-            Graph.BreadthSearch();
-            Graph.TopologicalSort();
-            bool isConnected = Graph.IsConnectedGraph();
+            graph.DepthSearch();
+            graph.DeepSearch("A", "F");
+            graph.BreadthSearch("A");
+            graph.BreadthSearch();
+
+            lbl_TopologicalOrdering.Text = "";
+            var topologicalOrdering = graph.TopologicalSort();
+
+            foreach (var t in topologicalOrdering)
+            {
+                lbl_TopologicalOrdering.Text += t.ToString() + " ";
+            }
+
+            bool isConnected = graph.IsConnectedGraph();
+
+            lbl_isConected.Text = "";
+            lbl_isConected.Text = isConnected ? "Grafo é Conexo" : "Grafo não conexo";
             if (isConnected)
             {
-                Graph.KruskalMST();
-                Graph.PrimMST();
-                Graph.DijkstraShortestPath("A", "E");
+                //var subgraph = graph.KruskalMST();
+                //UpdateDgvMSTAdjacencyList(subgraph);
+
+                graph.PrimMST();
+                
+
+                var path = graph.DijkstraShortestPath("A", "C");
+                lbl_MinPath.Text = "";
+                foreach (var p in path.path)
+                {
+                    lbl_MinPath.Text += p.ToString() + " ";
+                }
+                lbl_TotalWeight.Text = "Total path: " + path.totalWeight;
             }
         }
 
@@ -554,6 +550,40 @@ namespace GraphManipulator
             {
                 // Se não for um número, cancelar a entrada de teclado
                 e.Handled = true;
+            }
+        }
+
+        // apagar depois
+        private void UpdateDgvMSTAdjacencyList(Graph graph)
+        {
+            gdv_MST.Columns.Clear();
+            gdv_MST.Rows.Clear();
+
+            foreach (var vertex in this.graph.AdjacencyList.Keys)
+            {
+                DataGridViewTextBoxColumn column = new DataGridViewTextBoxColumn();
+                column.HeaderText = vertex;
+                gdv_MST.Columns.Add(column);
+            }
+
+            int columnIndex = 0;
+            foreach (var vertex in this.graph.AdjacencyList.Keys)
+            {
+                int rowIndex = 0;
+
+                foreach (var neighbor in this.graph.AdjacencyList[vertex])
+                {
+
+                    if (gdv_MST.Rows.Count < rowIndex + 1)
+                        gdv_MST.Rows.Add();
+
+                    gdv_MST.Rows[rowIndex].Cells[columnIndex].Value = neighbor;
+
+
+                    rowIndex++;
+
+                }
+                columnIndex++;
             }
         }
     }
