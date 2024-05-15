@@ -17,6 +17,7 @@ namespace GraphManipulator
         private List<Edge> Edges { get; set; }
         public Dictionary<string, List<(string, int)>> AdjacencyList { get; private set; }
         public int[,] AdjacencyMatrix { get; private set; }
+        public List<List<string>> Sets { get; set; }
 
         public int GraphDegree
         {
@@ -68,8 +69,8 @@ namespace GraphManipulator
             {
                 int row = Vertices.IndexOf(edge.Predecessor);
                 int col = Vertices.IndexOf(edge.Successor);
-                                
-                AdjacencyMatrix[row, col] = edge.Weight ?? 1; 
+
+                AdjacencyMatrix[row, col] = edge.Weight ?? 1;
 
                 if (!IsDirectGraph)
                     AdjacencyMatrix[col, row] = edge.Weight ?? 1;
@@ -162,47 +163,47 @@ namespace GraphManipulator
                 return false;
 
             Dictionary<string, bool> visited = new Dictionary<string, bool>();
-            Dictionary<string, bool> colors = new Dictionary<string, bool>(); 
+            Dictionary<string, bool> colors = new Dictionary<string, bool>();
 
-            foreach (var vertex in Vertices) 
+            foreach (var vertex in Vertices)
             {
                 visited[vertex.Name] = false;
                 colors[vertex.Name] = false;
             }
 
-            foreach (var vertex in Vertices) 
+            foreach (var vertex in Vertices)
             {
                 if (!visited[vertex.Name]) // Se o vértice ainda não foi visitado
                 {
-                    Queue<string> queue = new Queue<string>(); 
+                    Queue<string> queue = new Queue<string>();
                     queue.Enqueue(vertex.Name);
-                    colors[vertex.Name] = true; 
+                    colors[vertex.Name] = true;
 
-                    while (queue.Count > 0) 
+                    while (queue.Count > 0)
                     {
-                        string currentVertex = queue.Dequeue(); 
+                        string currentVertex = queue.Dequeue();
 
                         foreach (var (neighbor, weight) in AdjacencyList[currentVertex]) // Para cada vizinho do vértice atual
                         {
-                            if (!visited[neighbor]) 
+                            if (!visited[neighbor])
                             {
-                                visited[neighbor] = true; 
-                                colors[neighbor] = !colors[currentVertex]; 
-                                queue.Enqueue(neighbor); 
+                                visited[neighbor] = true;
+                                colors[neighbor] = !colors[currentVertex];
+                                queue.Enqueue(neighbor);
                             }
                             else if (colors[neighbor] == colors[currentVertex]) // Se o vizinho já foi visitado e tem a mesma cor do vértice atual
                             {
-                                return false; 
+                                return false;
                             }
                         }
                     }
                 }
             }
 
-            return true; 
+            return true;
         }
 
-       
+
         public List<string> TopologicalSort()
         {
             Stack<string> stack = new Stack<string>();
@@ -260,8 +261,8 @@ namespace GraphManipulator
 
             bool isConected = visitedVertices.Count == Vertices.Count;
             return isConected;
-        }  
-               
+        }
+
 
 
 
@@ -452,7 +453,6 @@ namespace GraphManipulator
         }
         #endregion
 
-
         #region Search Methods
         public List<string> DeepSearch(string startVertex, string targetVertex)
         {
@@ -467,7 +467,7 @@ namespace GraphManipulator
             DeepSearch(startVertex, targetVertex, visited, path, 0);
 
             return path;
-        }      
+        }
         private bool DeepSearch(string currentVertex, string targetVertex, Dictionary<string, bool> visited, List<string> path, int currentCost)
         {
             visited[currentVertex] = true;
@@ -592,9 +592,8 @@ namespace GraphManipulator
 
             return visitedVertices;
         }
-      
-        #endregion
 
+        #endregion
 
         #region Subgraph Methods
         public Graph MSTKruskal()
@@ -618,6 +617,7 @@ namespace GraphManipulator
 
             return mstGraph;
         }
+
         public Graph MSTPrim(string root)
         {
             Graph mstGraph = new Graph(IsDirectGraph);
@@ -766,12 +766,6 @@ namespace GraphManipulator
         }
 
         #endregion
-
-
-
-
-
-
 
         #region DisjointSetClass
         // Classe para representar um conjunto disjunto

@@ -603,8 +603,8 @@ namespace GraphManipulator
         private void UpdateDgvDijkstraAdjacencyList(Graph graph)
         {
             // Limpar colunas e linhas
-            gdv_MST.Columns.Clear();
-            gdv_MST.Rows.Clear();
+            dgv_Dijkstra.Columns.Clear();
+            dgv_Dijkstra.Rows.Clear();
 
             // Adicionar cabeçalhos de coluna (vértices)
             foreach (var vertex in graph.AdjacencyList.Keys)
